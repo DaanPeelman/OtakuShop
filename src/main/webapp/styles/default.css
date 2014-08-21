@@ -1,0 +1,332 @@
+@charset "utf-8";
+
+html {overflow-y: scroll;}
+body {font-size: 62.5%; font-family: Verdana, Geneva, sans-serif;}
+p {font-size: 1.4em; text-align: justify; line-height:1.3em; letter-spacing: 0.01em; margin-bottom: 1.3em;}
+h1 {font-size: 4.5em; font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif; font-weight: normal; letter-spacing: 0.01em; margin-bottom: 1em;}
+h2 {font-size: 3em; font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif; font-weight: normal; letter-spacing: 0.01em; margin-bottom: 1em;}
+h3 {font-size: 1.8em; font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif; font-weight: normal; letter-spacing: 0.01em; margin-bottom: 1em;}
+a:link, a:visited {color: #ef7900; text-decoration: none;}
+a:hover, a:active {color: #ef7900; text-decoration: underline;}
+ul {font-size: 1.4em; letter-spacing: 0.01em;}
+table {font-size: 1.4em; letter-spacing: 0.01em;}
+table thead {text-align: center;}
+table td {padding: 5px 5px;}
+input[type=text], input[type=password] {margin-bottom: 1em;}
+form p {font-size: 1.5em; margin-bottom: 0.1em;}
+form input[type=submit] {
+	font-size: 1.03em;
+	letter-spacing: 0.01em;
+	color: #fff;
+	background-color: #e8430c;
+    cursor:pointer;
+	height: 22px;
+    border: none;
+}
+
+
+#menu {
+	background-color: #ef7900;
+	
+	width: 100%;
+	height: 30px;
+	
+	border-bottom: 3px solid #ffb467;
+	
+	position: fixed;
+	top: 0;
+	z-index: 3;
+}
+
+#menu ul {
+	height: 30px;
+	width: 1014px;
+}
+
+#menu ul li {
+	font-size: 1.2em;
+	text-align: center;
+
+	width: 125px;
+	height: 30px;
+	
+	float: left;
+}
+
+#menu ul li.right {
+	float: right;
+}
+
+#menu ul li a:link, #menu ul li a:visited, #menu ul li a:hover, #menu ul li a:active {
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+
+	width: 125px;
+	height: 23px;
+	padding-top: 7px;
+	
+	display: block;
+}
+#menu ul li a:link, #menu ul li a:visited {
+	color: #fff;
+}
+#menu ul li a:hover, #menu ul li a:active {
+	color: #ffdebc;
+	text-decoration: none;
+}
+
+#header {
+	text-align: center;
+	
+	height: 150px;
+}
+#header .content_wrap {
+	height: 94px;
+	padding-top: 55px;
+	border-bottom: 1px solid #ffb467;
+}
+
+#header h1 {
+	margin-bottom: 0;
+}
+
+#main_content {
+}
+
+#main_content .content_wrap {
+	padding-top: 40px;
+	padding-bottom: 40px;
+}
+
+.content_wrap {
+	width: 1014px;
+	
+	padding: 0 5px 0px 5px;
+	margin: 0 auto;
+}
+
+.aside {
+	float: left;
+	width: 195px;
+	padding-right: 10px;
+}
+.aside #zoekform input[type=text] {
+	width: 191px;
+}
+.aside #zoekform #vanPrijs, .aside #zoekform #vanDatum {
+	width: 30px;
+	float: left;
+}
+.aside #zoekform #totPrijs, .aside #zoekform #totDatum {
+	width: 30px;
+	float: right;
+}
+.aside #zoekform .slider {
+	margin-bottom: 1.3em;
+}
+.aside #zoekform .slidertekst input[type=text] {
+	margin-bottom: 0.3em;
+}
+
+#zoek_resultaten {
+	float: left;
+	width: 799px;
+	padding-left: 10px;
+}
+
+.product_rij {
+	background-color: #fff7ef;
+	
+	padding: 10px 10px;
+	margin-bottom: 10px;
+	border: 1px solid #ffe6cd;
+}
+.product_rij:hover {
+	background-color: #ffefde;
+}
+
+#laatste_producten .product_rij {
+	width: 992px;
+}
+
+#zoek_resultaten .product_rij {
+	width: 777px;
+}
+
+#laatste_producten .product_rij .foto {
+	width: 100px;
+	float: left;
+	margin-right: 20px;
+}
+#zoek_resultaten .product_rij .foto {
+	width: 70px;
+	float: left;
+	margin-right: 20px;
+}
+#laatste_producten .product_rij img {
+	height: auto;
+	width: 100px;
+	float: left;
+}
+#zoek_resultaten .product_rij img {
+	height: auto;
+	width: 70px;
+	float: left;
+}
+#laatste_producten .product_rij .info {
+	width: 872px;
+	float: left;
+}
+#zoek_resultaten .product_rij .info {
+	width: 687px;
+	float: left;
+}
+.product_rij a {
+	color: #000;
+}
+.product_rij span.prijs {
+	font-size: 1.8em;
+	font-weight: bold;
+	color: #f00;
+	float: left;
+}
+.product_rij .stock {
+	font-size: 1.6em;
+	font-weight: bold;
+	margin-bottom: 0.5em;
+}
+.in_stock {
+	color: #1fcc4f;
+}
+.laatste_in_stock {
+	color: #ff6526;
+}
+.niet_in_stock {
+	color: #f00;
+}
+.product_rij form {
+	float: right;
+}
+.product_rij form input[type=text] {
+	width: 30px;
+	margin-right: 5px;
+}
+
+#registreer, #aanmelden {
+	width: 507px;
+	
+	float: left;
+}
+#registreer input[type=text], #aanmelden input[type=text], #registreer input[type=password], #aanmelden input[type=password], #mandjeform input[type=text] {
+	width: 200px;
+}
+
+#winkelmandje {
+	width: 1014px;
+	text-align: center;
+	margin-bottom: 30px;
+}
+#winkelmandje thead, #winkelmandje .winkelmandje_overzicht {
+	color: #fff;
+	
+	border-right: 1px solid #ffe6cd;
+	border-left: 1px solid #ffe6cd;
+	
+	background-color: #ef7900;
+}
+#winkelmandje thead {
+	border-top: 1px solid #ffe6cd;
+	border-bottom: 1px solid #ffe6cd;
+}
+#winkelmandje .winkelmandje_overzicht {
+	border-right: none;
+	border-left: none;
+	border-bottom: 1px solid #ffe6cd;
+}
+#winkelmandje .totaal {
+	border-left: 1px solid #ffe6cd;
+}
+#winkelmandje tbody tr:first-child {
+	border-top: none;
+}
+#winkelmandje tbody tr {
+	width: 1012px;
+	
+	border-top: 2px solid white;
+	border-right: 1px solid #ffe6cd;
+	border-left: 1px solid #ffe6cd;
+	background-color: #fff7ef;
+}
+#winkelmandje tbody tr:last-child {
+	border-top: 1px solid #ffe6cd;
+	border-bottom: none;
+	border-left: none;
+	background-color: #fff;
+}
+#winkelmandje tbody tr:hover {
+	background-color: #ffefde;
+}
+#winkelmandje tbody tr:last-child:hover {
+	background-color: #fff;
+}
+#winkelmandje tbody tr td input[type=text] {
+	width: 50px;
+}
+#winkelmandje tbody  img {
+	width: 40px;
+	height: auto;
+	
+	margin-right: 10px;
+	float: left;
+}
+#winkelmandje tbody a {
+	color: #000;
+}
+#winkelmandje tbody h3 {
+	font-size: 1.2em;
+	margin-bottom: 1.5em;
+}
+#winkelmandje .product_mandje {
+	text-align: left;
+}
+#winkelmandje .aantal {
+	width: 60px;
+}
+#winkelmandje .prijs_header {
+	width: 100px;
+}
+#winkelmandje .prijs {
+	text-align: right;
+}
+#winkelmandje .verwijderen {
+	width: 60px;
+}
+#winkelmandje .delete_btn {
+	font-size: 1.03em;
+	letter-spacing: 0.01em;
+	color: #fff;
+	background-color: #e8430c;
+    cursor:pointer;
+	height: 22px;
+    border: none;
+}
+
+#footer {
+	background-color: #000;
+	color: #fff;
+	
+	padding-top: 10px;
+	border-top: 3px solid #ffb467;
+}
+
+#footer p {
+	font-size: 1.2em;
+	text-align: center;
+
+	margin-bottom: 0;
+}
+
+#footer a:link, #footer a:visited, #footer a:hover, #footer a:active {
+	color: #fff;
+	
+	text-decoration: none;
+}
