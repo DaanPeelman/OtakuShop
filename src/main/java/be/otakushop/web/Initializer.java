@@ -7,6 +7,9 @@ import javax.servlet.ServletException;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
+import be.otakushop.dao.CreateDAOBeans;
+import be.otakushop.services.CreateServiceBeans;
+
 public class Initializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 	@Override
 	protected String[] getServletMappings() {
@@ -15,7 +18,7 @@ public class Initializer extends AbstractAnnotationConfigDispatcherServletInitia
 	
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
-		return null;
+		return new Class<?>[] { CreateDAOBeans.class, CreateServiceBeans.class };
 	}
 	
 	@Override

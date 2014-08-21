@@ -17,7 +17,7 @@ public class Product {
 	protected Product() {
 	}
 
-	public Product(String titel, Serie serie, int hoogte, String omschrijving, Date uitgifteDatum, Uitgever uitgever, BigDecimal prijs, int stock) {
+	public Product(String titel, Serie serie, int hoogte, Date uitgifteDatum, String omschrijving, Uitgever uitgever, BigDecimal prijs, int stock) {
 		setTitel(titel);
 		setSerie(serie);
 		setHoogte(hoogte);
