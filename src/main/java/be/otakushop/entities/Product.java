@@ -1,12 +1,14 @@
 package be.otakushop.entities;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
 public class Product {
 	private long id;
 	private String titel;
 	private Serie serie;
 	private int hoogte;
+	private Date uitgifteDatum;
 	private String omschrijving;
 	private Uitgever uitgever;
 	private BigDecimal prijs;
@@ -15,7 +17,7 @@ public class Product {
 	protected Product() {
 	}
 
-	public Product(String titel, Serie serie, int hoogte, String omschrijving, Uitgever uitgever, BigDecimal prijs, int stock) {
+	public Product(String titel, Serie serie, int hoogte, String omschrijving, Date uitgifteDatum, Uitgever uitgever, BigDecimal prijs, int stock) {
 		setTitel(titel);
 		setSerie(serie);
 		setHoogte(hoogte);
@@ -25,7 +27,7 @@ public class Product {
 		setStock(stock);
 	}
 
-	public Product(long id, String titel, Serie serie, int hoogte, String omschrijving, Uitgever uitgever, BigDecimal prijs, int stock) {
+	public Product(long id, String titel, Serie serie, int hoogte, Date uitgifteDatum, String omschrijving, Uitgever uitgever, BigDecimal prijs, int stock) {
 		setId(id);
 		setTitel(titel);
 		setSerie(serie);
@@ -74,6 +76,14 @@ public class Product {
 
 	public void setHoogte(int hoogte) {
 		this.hoogte = hoogte;
+	}
+	
+	public Date getUitgifteDatum() {
+		return uitgifteDatum;
+	}
+	
+	public void setUitgifteDatum(Date uitgifteDatum) {
+		this.uitgifteDatum = uitgifteDatum;
 	}
 
 	public String getOmschrijving() {
@@ -124,6 +134,8 @@ public class Product {
 		result = prime * result + ((titel == null) ? 0 : titel.hashCode());
 		result = prime * result
 				+ ((uitgever == null) ? 0 : uitgever.hashCode());
+		result = prime * result
+				+ ((uitgifteDatum == null) ? 0 : uitgifteDatum.hashCode());
 		return result;
 	}
 
@@ -151,14 +163,19 @@ public class Product {
 				return false;
 		} else if (!uitgever.equals(other.uitgever))
 			return false;
+		if (uitgifteDatum == null) {
+			if (other.uitgifteDatum != null)
+				return false;
+		} else if (!uitgifteDatum.equals(other.uitgifteDatum))
+			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
 		return "Product [id=" + id + ", titel=" + titel + ", serie=" + serie
-				+ ", hoogte=" + hoogte + ", omschrijving=" + omschrijving
-				+ ", uitgever=" + uitgever + ", prijs=" + prijs + ", stock="
-				+ stock + "]";
+				+ ", hoogte=" + hoogte + ", uitgifteDatum=" + uitgifteDatum
+				+ ", omschrijving=" + omschrijving + ", uitgever=" + uitgever
+				+ ", prijs=" + prijs + ", stock=" + stock + "]";
 	}
 }
