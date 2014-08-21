@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -71,51 +72,27 @@
 				</div> <!-- END .aside -->
 				<div id="zoek_resultaten">
 					<h2>Onze producten</h2>
+					<c:if test="${not empty producten}">
+					<c:forEach var="product" items="${producten}">
 					<div class="product_rij clearfix">
 						<div class="foto">
-							<img src="${pageContext.servletContext.contextPath}/images/producten/1.jpg" alt="Nendoroid Nadeko"/>
+							<img src="${pageContext.servletContext.contextPath}/images/producten/${product.id}.jpg" alt="${product.titel}"/>
 						</div> <!-- END .foto -->
 						<div class="info">
-							<h3><a href="#" title="meer details over Nendoroid Nadeko Sengoku">Nendoroid Nadeko Sengoku</a></h3>
-							<p class="stock laatste_in_stock clearfix">Laatste 2 in stock!</p>
-							<span class="prijs">&euro;43.77</span>
+							<h3><a href="#" title="meer details over ${product.titel}"><c:out value="${product.titel}" /></a></h3>
+							<c:if test="${product.stock == 0}"><p class="stock niet_in_stock clearfix">Niet in voorraad</p></c:if>
+							<c:if test="${(product.stock > 0) && (product.stock <= 4)}"><p class="stock laatste_in_stock clearfix">Laatste ${product.stock} in voorraad</p></c:if>
+							<c:if test="${product.stock > 3}"><p class="stock in_stock clearfix">In voorraad</p></c:if>
+							<span class="prijs">&euro;<fmt:formatNumber value="${product.prijs}" minFractionDigits="2" maxFractionDigits="2"/></span>
 							<form action="#" method="post">
 								<p><label>Aantal:
 								<input type="text" value="1" title="voer het aantal in dat u wil bestellen" /></label>
-								<input type="submit" value="Voeg toe aan mandje" title="voeg dit product toe aan uw mandje" /></p>
+								<input type="submit" value="Voeg toe aan mandje" <c:if test="${product.stock > 0}">title="voeg dit product toe aan uw mandje"</c:if><c:if test="${product.stock == 0}">title="dit product is niet meer in voorraad" disabled="disabled"</c:if> /></p>
 							</form>
 						</div> <!-- END .info -->
 					</div> <!-- END .product_rij -->
-					<div class="product_rij clearfix">
-						<div class="foto">
-							<img src="${pageContext.servletContext.contextPath}/images/producten/2.jpg" alt="Nendoroid Shimakaze"/>
-						</div> <!-- END .foto -->
-						<div class="info">
-							<h3><a href="#" title="meer details over Nendoroid Shimakaze">Nendoroid Shimakaze</a></h3>
-							<p class="stock in_stock clearfix">In stock!</p>
-							<span class="prijs">&euro;49.77</span>
-							<form action="#" method="post">
-								<p><label>Aantal:
-								<input type="text" value="1" title="voer het aantal in dat u wil bestellen" /></label>
-								<input type="submit" value="Voeg toe aan mandje" title="voeg dit product toe aan uw mandje" /></p>
-							</form>
-						</div> <!-- END .info -->
-					</div> <!-- END .product_rij -->
-					<div class="product_rij clearfix">
-						<div class="foto">
-							<img src="${pageContext.servletContext.contextPath}/images/producten/3.jpg" alt="Nendoroid Misaka Mikoto"/>
-						</div> <!-- END .foto -->
-						<div class="info">
-							<h3><a href="#" title="meer details over Nendoroid Misaka Mikoto">Nendoroid Misaka Mikoto</a></h3>
-							<p class="stock niet_in_stock clearfix">Niet in stock!</p>
-							<span class="prijs">&euro;39.81</span>
-							<form action="#" method="post">
-								<p><label>Aantal:
-								<input type="text" value="1" title="voer het aantal in dat u wil bestellen" /></label>
-								<input type="submit" value="Voeg toe aan mandje" title="voeg dit product toe aan uw mandje" /></p>
-							</form>
-						</div> <!-- END .foto -->
-					</div> <!-- END .product_rij -->
+					</c:forEach>
+					</c:if>
 				</div> <!-- END #zoek_resultaten -->
 			</div> <!-- END .content_wrap -->
 		</div> <!-- END #main_content -->
