@@ -21,6 +21,7 @@ public class Product {
 		setTitel(titel);
 		setSerie(serie);
 		setHoogte(hoogte);
+		setUitgifteDatum(uitgifteDatum);
 		setOmschrijving(omschrijving);
 		setUitgever(uitgever);
 		setPrijs(prijs);
@@ -32,6 +33,7 @@ public class Product {
 		setTitel(titel);
 		setSerie(serie);
 		setHoogte(hoogte);
+		setUitgifteDatum(uitgifteDatum);
 		setOmschrijving(omschrijving);
 		setUitgever(uitgever);
 		setPrijs(prijs);
