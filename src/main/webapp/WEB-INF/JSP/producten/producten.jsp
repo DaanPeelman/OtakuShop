@@ -79,9 +79,10 @@
 							<img src="${pageContext.servletContext.contextPath}/images/producten/${product.id}.jpg" alt="${product.titel}"/>
 						</div> <!-- END .foto -->
 						<div class="info">
-							<h3><a href="#" title="meer details over ${product.titel}"><c:out value="${product.titel}" /></a></h3>
+							<h3><a href="#" title="meer details over <c:out value='${product.titel}' />"><c:out value="${product.titel}" /></a></h3>
 							<c:if test="${product.stock == 0}"><p class="stock niet_in_stock clearfix">Niet in voorraad</p></c:if>
-							<c:if test="${(product.stock > 0) && (product.stock <= 4)}"><p class="stock laatste_in_stock clearfix">Laatste ${product.stock} in voorraad</p></c:if>
+							<c:if test="${product.stock == 1}"><p class="stock laatste_in_stock clearfix">Laatste in voorraad</p></c:if>
+							<c:if test="${(product.stock > 1) && (product.stock < 4)}"><p class="stock laatste_in_stock clearfix">Laatste ${product.stock} in voorraad</p></c:if>
 							<c:if test="${product.stock > 3}"><p class="stock in_stock clearfix">In voorraad</p></c:if>
 							<span class="prijs">&euro;<fmt:formatNumber value="${product.prijs}" minFractionDigits="2" maxFractionDigits="2"/></span>
 							<form action="#" method="post">
