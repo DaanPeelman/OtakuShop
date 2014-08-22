@@ -2,7 +2,6 @@ package be.otakushop.dao;
 
 
 
-import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,8 +14,6 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 
 import be.otakushop.entities.Product;
-import be.otakushop.entities.Serie;
-import be.otakushop.entities.Uitgever;
 
 @Configuration
 @ComponentScan(basePackageClasses = CreateDAOBeans.class)
