@@ -25,7 +25,7 @@ public class ProductControllerTest {
 	@Before
 	public void setUp() {
 		producten = Collections.emptyList();
-		product = new Product(1L, "Nendoroid Nadeko Sengoku", new Serie(1L, "Bakemonogatori"), 100, new Date(2014, 6, 16), "", new Uitgever(1L, "Good Smile Company"), new BigDecimal(43.77), 2);
+		product = new Product(1L, "Nendoroid Nadeko Sengoku", new Serie(1L, "Bakemonogatori"), 100, new Date(2014, 6, 16),"", "", new Uitgever(1L, "Good Smile Company"), new BigDecimal(43.77), 2);
 		
 		productService = Mockito.mock(ProductService.class);
 		Mockito.when(productService.findAll()).thenReturn(producten);

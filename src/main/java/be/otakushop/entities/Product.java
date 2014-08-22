@@ -9,7 +9,8 @@ public class Product {
 	private Serie serie;
 	private int hoogte;
 	private Date uitgifteDatum;
-	private String omschrijving;
+	private String omschrijvingNl;
+	private String omschrijvingEn;
 	private Uitgever uitgever;
 	private BigDecimal prijs;
 	private int stock;
@@ -17,24 +18,26 @@ public class Product {
 	protected Product() {
 	}
 
-	public Product(String titel, Serie serie, int hoogte, Date uitgifteDatum, String omschrijving, Uitgever uitgever, BigDecimal prijs, int stock) {
+	public Product(String titel, Serie serie, int hoogte, Date uitgifteDatum, String omschrijvingNl, String omschrijvingEn, Uitgever uitgever, BigDecimal prijs, int stock) {
 		setTitel(titel);
 		setSerie(serie);
 		setHoogte(hoogte);
 		setUitgifteDatum(uitgifteDatum);
-		setOmschrijving(omschrijving);
+		setOmschrijvingNl(omschrijvingNl);
+		setOmschrijvingEn(omschrijvingEn);
 		setUitgever(uitgever);
 		setPrijs(prijs);
 		setStock(stock);
 	}
 
-	public Product(long id, String titel, Serie serie, int hoogte, Date uitgifteDatum, String omschrijving, Uitgever uitgever, BigDecimal prijs, int stock) {
+	public Product(long id, String titel, Serie serie, int hoogte, Date uitgifteDatum, String omschrijvingNl, String omschrijvingEn, Uitgever uitgever, BigDecimal prijs, int stock) {
 		setId(id);
 		setTitel(titel);
 		setSerie(serie);
 		setHoogte(hoogte);
 		setUitgifteDatum(uitgifteDatum);
-		setOmschrijving(omschrijving);
+		setOmschrijvingNl(omschrijvingNl);
+		setOmschrijvingEn(omschrijvingEn);
 		setUitgever(uitgever);
 		setPrijs(prijs);
 		setStock(stock);
@@ -88,12 +91,20 @@ public class Product {
 		this.uitgifteDatum = uitgifteDatum;
 	}
 
-	public String getOmschrijving() {
-		return omschrijving;
+	public String getOmschrijvingNl() {
+		return omschrijvingNl;
 	}
 
-	public void setOmschrijving(String omschrijving) {
-		this.omschrijving = omschrijving;
+	public void setOmschrijvingNl(String omschrijvingNl) {
+		this.omschrijvingNl = omschrijvingNl;
+	}
+	
+	public String getOmschrijvingEn() {
+		return omschrijvingEn;
+	}
+	
+	public void setOmschrijvingEn(String omschrijvingEn) {
+		this.omschrijvingEn = omschrijvingEn;
 	}
 
 	public Uitgever getUitgever() {
@@ -177,7 +188,8 @@ public class Product {
 	public String toString() {
 		return "Product [id=" + id + ", titel=" + titel + ", serie=" + serie
 				+ ", hoogte=" + hoogte + ", uitgifteDatum=" + uitgifteDatum
-				+ ", omschrijving=" + omschrijving + ", uitgever=" + uitgever
-				+ ", prijs=" + prijs + ", stock=" + stock + "]";
+				+ ", omschrijvingNl=" + omschrijvingNl + ", omschrijvingEn="
+				+ omschrijvingEn + ", uitgever=" + uitgever + ", prijs="
+				+ prijs + ", stock=" + stock + "]";
 	}
 }
