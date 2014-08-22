@@ -50,7 +50,12 @@ public class ProductControllerTest {
 	}
 	
 	@Test
-	public void readMaaktRequestAttribuutProduct() {
+	public void readMetBestaandeIDGeeftProductTerug() {
 		Assert.assertSame(product, productController.read(1L).getModelMap().get("product"));
+	}
+	
+	@Test
+	public void readMetOnbestaandeIDGeeftNullTerug() {
+		Assert.assertNull(productController.read(999L).getModelMap().get("product"));
 	}
 }

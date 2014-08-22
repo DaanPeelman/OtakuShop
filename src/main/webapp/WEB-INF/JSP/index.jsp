@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -18,7 +19,7 @@
 		</div> <!-- END #header -->
 		<div id="main_content" class="clearfix">
 			<div class="content_wrap clearfix">
-				<h2>Lorem ipsum</h2>
+				<h2><spring:message code="indexHeader" /></h2>
 				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eleifend <a href="#" title="lorem ipsum dolor sit amet">nunc a volutpat</a> fringilla. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac mattis neque. Aenean ipsum arcu, sagittis at porttitor et, condimentum sagittis lectus. Nam lacinia lacus vel libero convallis suscipit. Nam hendrerit non lacus et elementum. Sed egestas, lacus at congue faucibus, elit diam aliquet orci, ac sodales quam nibh sit amet nibh. Quisque eu vulputate lectus. Mauris fringilla cursus mauris, mattis tristique enim varius nec. Ut felis sapien, lobortis a dui id, ultricies suscipit urna. Vestibulum non scelerisque nulla, a imperdiet neque.</p>
 				<p>Donec at vehicula lacus. Ut vitae erat ut tellus euismod posuere. Pellentesque ultrices libero ut lectus semper vestibulum. Morbi ullamcorper pharetra facilisis. Phasellus malesuada aliquam iaculis. Nulla bibendum pulvinar velit, at malesuada lacus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam at facilisis tellus. Vestibulum tincidunt ipsum in quam aliquet vulputate. Donec porta sapien sit amet lectus pretium porttitor. Sed nulla lacus, sodales et dapibus nec, adipiscing a sapien. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Quisque cursus turpis lacinia odio sodales, nec rhoncus libero feugiat. Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
 				<h2>Nieuwste producten</h2>
