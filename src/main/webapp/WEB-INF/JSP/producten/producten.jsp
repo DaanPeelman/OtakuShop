@@ -83,7 +83,7 @@
 					<form:form id="zoekform" commandName="zoekForm" action="${zoekurl}" method="get">
 						<h2>Verfijn</h2>
 						<p><form:label path="titel" for="naam">Naam:</form:label></p>
-						<p><form:input path="titel" type="text" title="voer een naam in" /></p>
+						<p><form:input path="titel" type="text" id="naam" title="voer een naam in" /></p>
 						<p><form:label path="serie" for="serie">Serie:</form:label></p>
 						<p><form:input path="serie" type="text" id="serie" title="voer een serie in" /></p>
 						<p><form:label path="uitgever" for="uitgever">Uitgever:</form:label></p>
