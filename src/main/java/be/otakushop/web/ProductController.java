@@ -22,7 +22,14 @@ public class ProductController {
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView findAll() {
-		return new ModelAndView("producten/producten", "producten", productService.findAll());
+		ModelAndView modelAndView = new ModelAndView("producten/producten");
+		
+		modelAndView.addObject("producten", productService.findAll());
+		modelAndView.addObject("maxPrijs", productService.findMaxPrijs());
+		modelAndView.addObject("minDatum", productService.findMinDatum());
+		modelAndView.addObject("maxDatum", productService.findMaxDatum());
+		
+		return modelAndView;
 	}
 	
 	@RequestMapping(value = "{product}", method = RequestMethod.GET)

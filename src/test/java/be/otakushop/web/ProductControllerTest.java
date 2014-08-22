@@ -46,16 +46,11 @@ public class ProductControllerTest {
 	
 	@Test
 	public void readActiveertJuisteView() {
-		Assert.assertEquals("producten/product", productController.read(1L).getViewName());
+		Assert.assertEquals("producten/product", productController.read(product).getViewName());
 	}
 	
 	@Test
 	public void readMetBestaandeIDGeeftProductTerug() {
-		Assert.assertSame(product, productController.read(1L).getModelMap().get("product"));
-	}
-	
-	@Test
-	public void readMetOnbestaandeIDGeeftNullTerug() {
-		Assert.assertNull(productController.read(999L).getModelMap().get("product"));
+		Assert.assertSame(product, productController.read(product).getModelMap().get("product"));
 	}
 }

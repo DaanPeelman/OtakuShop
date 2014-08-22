@@ -13,12 +13,13 @@
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 	<script type="text/javascript" src="http://code.jquery.com/ui/1.10.2/jquery-ui.min.js"></script>
 	<script type="text/javascript">
+		var pMax = parseInt("${maxPrijs}");
 		$(function() {
 			$( "#slider-range-prijs" ).slider({
 				range: true,
 				min: 0,
-				max: 500,
-				values: [0, 500],
+				max: pMax,
+				values: [0, pMax],
 				slide: function( event, ui ) {
 					$("#vanPrijs").val(ui.values[0]);
 					$("#totPrijs").val(ui.values[1]);
@@ -27,12 +28,15 @@
 			$("#vanPrijs").val($("#slider-range-prijs").slider("values", 0));
 			$("#totPrijs").val($("#slider-range-prijs").slider("values", 1));
 		});
+		
+		var dMin = parseInt("${minDatum}");
+		var dMax = parseInt("${maxDatum}");
 		$(function() {
 			$( "#slider-range-datum" ).slider({
 				range: true,
-				min: 2000,
-				max: 2014,
-				values: [2000, 2014],
+				min: dMin,
+				max: dMax,
+				values: [dMin, dMax],
 				slide: function( event, ui ) {
 					$("#vanDatum").val(ui.values[0]);
 					$("#totDatum").val(ui.values[1]);

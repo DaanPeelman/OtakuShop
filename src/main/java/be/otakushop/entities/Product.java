@@ -28,7 +28,7 @@ public class Product implements Serializable {
 	private Serie serie;
 	private int hoogte;
 	@Temporal(TemporalType.DATE)
-	private Date uitgifteDatum;
+	private Date uitgifte;
 	private String omschrijvingNl;
 	private String omschrijvingEn;
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -40,11 +40,11 @@ public class Product implements Serializable {
 	protected Product() {
 	}
 
-	public Product(String titel, Serie serie, int hoogte, Date uitgifteDatum, String omschrijvingNl, String omschrijvingEn, Uitgever uitgever, BigDecimal prijs, int stock) {
+	public Product(String titel, Serie serie, int hoogte, Date uitgifte, String omschrijvingNl, String omschrijvingEn, Uitgever uitgever, BigDecimal prijs, int stock) {
 		setTitel(titel);
 		setSerie(serie);
 		setHoogte(hoogte);
-		setUitgifteDatum(uitgifteDatum);
+		setUitgifte(uitgifte);
 		setOmschrijvingNl(omschrijvingNl);
 		setOmschrijvingEn(omschrijvingEn);
 		setUitgever(uitgever);
@@ -52,12 +52,12 @@ public class Product implements Serializable {
 		setStock(stock);
 	}
 
-	public Product(long id, String titel, Serie serie, int hoogte, Date uitgifteDatum, String omschrijvingNl, String omschrijvingEn, Uitgever uitgever, BigDecimal prijs, int stock) {
+	public Product(long id, String titel, Serie serie, int hoogte, Date uitgifte, String omschrijvingNl, String omschrijvingEn, Uitgever uitgever, BigDecimal prijs, int stock) {
 		setId(id);
 		setTitel(titel);
 		setSerie(serie);
 		setHoogte(hoogte);
-		setUitgifteDatum(uitgifteDatum);
+		setUitgifte(uitgifte);
 		setOmschrijvingNl(omschrijvingNl);
 		setOmschrijvingEn(omschrijvingEn);
 		setUitgever(uitgever);
@@ -105,12 +105,12 @@ public class Product implements Serializable {
 		this.hoogte = hoogte;
 	}
 	
-	public Date getUitgifteDatum() {
-		return uitgifteDatum;
+	public Date getUitgifte() {
+		return uitgifte;
 	}
 	
-	public void setUitgifteDatum(Date uitgifteDatum) {
-		this.uitgifteDatum = uitgifteDatum;
+	public void setUitgifte(Date uitgifte) {
+		this.uitgifte = uitgifte;
 	}
 
 	public String getOmschrijvingNl() {
@@ -170,7 +170,7 @@ public class Product implements Serializable {
 		result = prime * result
 				+ ((uitgever == null) ? 0 : uitgever.hashCode());
 		result = prime * result
-				+ ((uitgifteDatum == null) ? 0 : uitgifteDatum.hashCode());
+				+ ((uitgifte == null) ? 0 : uitgifte.hashCode());
 		return result;
 	}
 
@@ -198,10 +198,10 @@ public class Product implements Serializable {
 				return false;
 		} else if (!uitgever.equals(other.uitgever))
 			return false;
-		if (uitgifteDatum == null) {
-			if (other.uitgifteDatum != null)
+		if (uitgifte == null) {
+			if (other.uitgifte != null)
 				return false;
-		} else if (!uitgifteDatum.equals(other.uitgifteDatum))
+		} else if (!uitgifte.equals(other.uitgifte))
 			return false;
 		return true;
 	}
@@ -209,7 +209,7 @@ public class Product implements Serializable {
 	@Override
 	public String toString() {
 		return "Product [id=" + id + ", titel=" + titel + ", serie=" + serie
-				+ ", hoogte=" + hoogte + ", uitgifteDatum=" + uitgifteDatum
+				+ ", hoogte=" + hoogte + ", uitgifteDatum=" + uitgifte
 				+ ", omschrijvingNl=" + omschrijvingNl + ", omschrijvingEn="
 				+ omschrijvingEn + ", uitgever=" + uitgever + ", prijs="
 				+ prijs + ", stock=" + stock + "]";

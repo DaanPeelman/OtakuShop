@@ -35,7 +35,7 @@
 							<p>Serie: <c:out value='${product.serie.titel}' /></p>
 							<p>Uitgever: <c:out value='${product.uitgever.naam}' /></p>
 							<p>Hoogte: ${product.hoogte}mm</p>
-							<p>Uitgiftedatum: <fmt:formatDate value='${product.uitgifteDatum}'/></p>
+							<p>Uitgiftedatum: <fmt:formatDate value='${product.uitgifte}'/></p>
 							<c:if test='${product.stock == 0}'><p class="stock niet_in_stock clearfix">Niet in voorraad</p></c:if>
 							<c:if test='${product.stock == 1}'><p class="stock laatste_in_stock clearfix">Laatste in voorraad</p></c:if>
 							<c:if test='${(product.stock > 1) && (product.stock < 4)}'><p class="stock laatste_in_stock clearfix">Laatste ${product.stock} in voorraad</p></c:if>
