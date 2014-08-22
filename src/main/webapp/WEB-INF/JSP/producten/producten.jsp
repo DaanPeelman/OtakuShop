@@ -3,6 +3,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -14,12 +15,22 @@
 	<script type="text/javascript" src="http://code.jquery.com/ui/1.10.2/jquery-ui.min.js"></script>
 	<script type="text/javascript">
 		var pMax = parseInt("${maxPrijs}");
+		var selectStartPrijs = parseInt("${selectStartPrijs}");
+		var selectEindPrijs = parseInt("${selectEindPrijs}");
+		
+		if(isNaN(selectStartPrijs)) {
+			selectStartPrijs = 0;
+		}
+		if(isNaN(selectEindPrijs)) {
+			selectEindPrijs = pMax;
+		}
+		
 		$(function() {
 			$( "#slider-range-prijs" ).slider({
 				range: true,
 				min: 0,
 				max: pMax,
-				values: [0, pMax],
+				values: [selectStartPrijs, selectEindPrijs],
 				slide: function( event, ui ) {
 					$("#vanPrijs").val(ui.values[0]);
 					$("#totPrijs").val(ui.values[1]);
@@ -31,12 +42,22 @@
 		
 		var dMin = parseInt("${minDatum}");
 		var dMax = parseInt("${maxDatum}");
+		var selectStartJaar = parseInt("${selectStartJaar}");
+		var selectEindJaar = parseInt("${selectEindJaar}");
+		
+		if(isNaN(selectStartJaar)) {
+			selectStartJaar = dMin;
+		}
+		if(isNaN(selectEindJaar)) {
+			selectEindJaar = dMax;
+		}
+		
 		$(function() {
 			$( "#slider-range-datum" ).slider({
 				range: true,
 				min: dMin,
 				max: dMax,
-				values: [dMin, dMax],
+				values: [selectStartJaar, selectEindJaar],
 				slide: function( event, ui ) {
 					$("#vanDatum").val(ui.values[0]);
 					$("#totDatum").val(ui.values[1]);
@@ -58,22 +79,26 @@
 		<div id="main_content" class="clearfix">
 			<div class="content_wrap clearfix">
 				<div class="aside">
-					<form id="zoekform" action="#" method="get">
+					<c:url var="zoekurl" value='/producten' />
+					<form:form id="zoekform" commandName="zoekForm" action="${zoekurl}" method="get">
 						<h2>Verfijn</h2>
-						<p><label for="naam">Naam:</label></p>
-						<p><input type="text" id="naam" title="voer een naam in" /></p>
-						<p><label for="serie">Serie:</label></p>
-						<p><input type="text" id="serie" title="voer een serie in" /></p>
-						<p><label for="uitgever">Uitgever:</label></p>
-						<p><input type="text" id="uitgever" title="voer een uitgever in" /></p>
+						<p><form:label path="titel" for="naam">Naam:</form:label></p>
+						<p><form:input path="titel" type="text" title="voer een naam in" /></p>
+						<p><form:label path="serie" for="serie">Serie:</form:label></p>
+						<p><form:input path="serie" type="text" id="serie" title="voer een serie in" /></p>
+						<p><form:label path="uitgever" for="uitgever">Uitgever:</form:label></p>
+						<p><form:select path="uitgever" id="uitgever" title="selecteer een uitgever">
+							<form:option value="-" label="-" />
+							<form:options items="${uitgevers}" />
+						</form:select></p>
 						<p><label>Prijs:</label></p>
-						<p class="slidertekst clearfix"><input type="text" id="vanPrijs" title="startprijs" readonly="readonly" /><input type="text" id="totPrijs" title="eindprijs" readonly="readonly" /></p>
+						<p class="slidertekst clearfix"><form:input path="startPrijs" type="text" id="vanPrijs" title="startprijs" readonly="readonly" /><form:input path="eindPrijs" type="text" id="totPrijs" title="eindprijs" readonly="readonly" /></p>
 						<div class="slider" id="slider-range-prijs" title="selecteer een prijs gebied" ></div>
 						<p><label>Datum:</label></p>
-						<p class="slidertekst clearfix"><input type="text" id="vanDatum" title="startdatum" readonly="readonly" /><input type="text" id="totDatum" title="einddatum" readonly="readonly" /></p>
+						<p class="slidertekst clearfix"><form:input path="startJaar" type="text" id="vanDatum" title="startdatum" readonly="readonly" /><form:input path="eindJaar" type="text" id="totDatum" title="einddatum" readonly="readonly" /></p>
 						<div class="slider" id="slider-range-datum" title="selecteer datum gebied" ></div>
 						<p><input type="submit" value="Zoek" title="verfijn uw zoekresultaten" /></p>
-					</form>
+					</form:form>
 				</div> <!-- END .aside -->
 				<div id="zoek_resultaten">
 					<h2>Onze producten</h2>

@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 import be.otakushop.entities.Product;
+import be.otakushop.web.ZoekForm;
 
 public interface ProductService {
 	Iterable<Product> findAll();
@@ -12,4 +13,5 @@ public interface ProductService {
 	long findMaxPrijs();
 	int findMinDatum();
 	int findMaxDatum();
+	Iterable<Product> findByZoektermen(ZoekForm zoekform);
 }

@@ -1,11 +1,15 @@
 package be.otakushop.services;
 
 import java.math.BigDecimal;
-import java.math.MathContext;
-import java.math.RoundingMode;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -16,16 +20,25 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import be.otakushop.dao.ProductDAO;
+import be.otakushop.dao.SerieDAO;
+import be.otakushop.dao.UitgeverDAO;
 import be.otakushop.entities.Product;
+import be.otakushop.entities.Serie;
+import be.otakushop.entities.Uitgever;
+import be.otakushop.web.ZoekForm;
 
 @Service
 @Transactional(readOnly = true)
-public class ProductServiceImpl implements ProductService {
+class ProductServiceImpl implements ProductService {
 	private final ProductDAO productDAO;
+	private final SerieDAO serieDAO;
+	private final UitgeverDAO uitgeverDAO;
 	
 	@Autowired
-	public ProductServiceImpl(ProductDAO productDAO) {
+	public ProductServiceImpl(ProductDAO productDAO, SerieDAO serieDAO, UitgeverDAO uitgeverDAO) {
 		this.productDAO = productDAO;
+		this.serieDAO = serieDAO;
+		this.uitgeverDAO = uitgeverDAO;
 	}
 	
 	@Override
@@ -85,5 +98,66 @@ public class ProductServiceImpl implements ProductService {
 	    int maxJaar = cal.get(Calendar.YEAR);
 
 		return maxJaar;
+	}
+	
+	@Override
+	public Iterable<Product> findByZoektermen(ZoekForm zoekform) {
+		DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
+		Date startDatum = new Date();
+		Date eindDatum = new Date();
+		try {
+			 startDatum = df.parse(String.format("%d/12/31", zoekform.getStartJaar() - 1));
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		try {
+			eindDatum = df.parse(String.format("%d/01/01", zoekform.getEindJaar() + 1));
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		
+		ArrayList<Product> producten =  (ArrayList<Product>)productDAO.findByTitelContainsAndPrijsBetweenAndUitgifteBetween(zoekform.getTitel(), new BigDecimal(zoekform.getStartPrijs()), new BigDecimal(zoekform.getEindPrijs()), startDatum, eindDatum);
+		Map<Long, Product> mapProducten = new ConcurrentHashMap<>();
+		
+		for(Product product:producten) {
+			mapProducten.put(product.getId(), product);
+		}
+		
+		
+		if(zoekform.getSerie() != null && !zoekform.getSerie().equals("")) {
+			Iterable<Serie> series = serieDAO.findByTitelContains(zoekform.getSerie());
+			for(Product product:mapProducten.values()) {
+				boolean gevonden = false;
+				
+				for(Serie serie:series) {
+					if(product.getSerie() == serie) {
+						gevonden = true;
+					}
+				}
+				
+				if(gevonden == false) {
+					mapProducten.remove(product.getId());
+				}
+			}
+		}
+		
+		if(zoekform.getUitgever() != null && !zoekform.getUitgever().equals("-")) {
+			Iterable<Uitgever> uitgevers = uitgeverDAO.findByNaamContains(zoekform.getUitgever());
+			for(Product product:mapProducten.values()) {
+				boolean gevonden = false;
+				
+				for(Uitgever uitgever:uitgevers) {
+					if(product.getUitgever() == uitgever) {
+						gevonden = true;
+					}
+				}
+				
+				if(gevonden == false) {
+					mapProducten.remove(product.getId());
+				}
+			}
+		}
+		
+		return mapProducten.values();
 	}
 }

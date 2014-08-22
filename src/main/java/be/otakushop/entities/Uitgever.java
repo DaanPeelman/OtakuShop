@@ -101,6 +101,6 @@ public class Uitgever implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Uitgever [id=" + id + ", naam=" + naam + "]";
+		return naam;
 	}
 }
