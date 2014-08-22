@@ -31,7 +31,7 @@
 							<h3><a href="#" title="meer details over Nendoroid Nadeko Sengoku">Nendoroid Nadeko Sengoku</a></h3>
 							<p>From the popular anime series 'Bakemonogatari' comes a Nendoroid of the girl with a snake wrapped around her - Nadeko Sengoku! She comes with three expressions including her standard expression, an unsure embarrassed expression and a bright smiling expression! Her trademark large hat as well as the coat she wears on her shoulders are both included and can be attached and removed whenever you like, allowing you to recreate all sorts of different scenes from the series! She also comes with other optional parts including a swimsuit and sitting parts! Be sure to display her with the other characters from the series to fully bring out the Bakemonogatari universe!</p>
 							<span class="prijs">&euro;43.77</span>
-							<form action="#" method="post">
+							<form class="bestelform" action="#" method="post">
 								<p><label>Aantal:
 								<input type="text" value="1" title="voer het aantal in dat u wil bestellen" /></label>
 								<input type="submit" value="Voeg toe aan mandje" title="voeg dit product toe aan uw mandje" /></p>
@@ -46,7 +46,7 @@
 							<h3><a href="#" title="meer details over Nendoroid Shimakaze">Nendoroid Shimakaze</a></h3>
 							<p>From 'Kantai Collection ~KanColle~' comes a Nendoroid of Shimakaze, one of the cutest and fastest battleships you'll ever see! Shimakaze includes various optional parts including three of the cute 'Rensouhou-chan' naval artillery cannons! Other optional parts include an alternate body to pose her in her 'half damage' form, torpedo parts to fire on her enemy and even shooting effect parts for her cute little cannons. Recreate the world of KanColle in cute Nendoroid form!</p>
 							<span class="prijs">&euro;49.77</span>
-							<form action="#" method="post">
+							<form class="bestelform" action="#" method="post">
 								<p><label>Aantal:
 								<input type="text" value="1" title="voer het aantal in dat u wil bestellen" /></label>
 								<input type="submit" value="Voeg toe aan mandje" title="voeg dit product toe aan uw mandje" /></p>
@@ -61,7 +61,7 @@
 							<h3><a href="#" title="meer details over Nendoroid Misaka Mikoto">Nendoroid Misaka Mikoto</a></h3>
 							<p>From the popular anime series 'Toaru Kagaku no Railgun S' comes a Nendoroid of Tokiwadai Middle School's 'Railgun', also known as Mikoto Misaka! She comes complete with a number of cute optional parts which feature her beloved 'Gekota' character - including her schoolbag with a Gekota strap as well as her Gekota themed cellphone! She also comes with electric effect parts for both her head and the front of her arm, allowing you to display her in her element. The coin used for her trademark 'Railgun' attack is also included! All these optional parts can be used to show off the 'Electric Princess' in a range of poses from epic combat scenes to cute embarrassed scenes, allowing fans to decide which they prefer! </p>
 							<span class="prijs">&euro;39.81</span>
-							<form action="#" method="post">
+							<form class="bestelform" action="#" method="post">
 								<p><label>Aantal:
 								<input type="text" value="1" title="voer het aantal in dat u wil bestellen" /></label>
 								<input type="submit" value="Voeg toe aan mandje" title="voeg dit product toe aan uw mandje" /></p>

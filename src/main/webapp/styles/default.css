@@ -77,12 +77,14 @@ form input[type=submit] {
 #header {
 	text-align: center;
 	
-	height: 150px;
+	height: 149px;
+	
+	border-bottom: 1px solid #ffb467;
 }
 #header .content_wrap {
-	height: 94px;
+	height: 95px;
 	padding-top: 55px;
-	border-bottom: 1px solid #ffb467;
+	
 }
 
 #header h1 {
@@ -183,13 +185,13 @@ form input[type=submit] {
 .product_rij a {
 	color: #000;
 }
-.product_rij span.prijs {
+span.prijs {
 	font-size: 1.8em;
 	font-weight: bold;
 	color: #f00;
 	float: left;
 }
-.product_rij .stock {
+.stock {
 	font-size: 1.6em;
 	font-weight: bold;
 	margin-bottom: 0.5em;
@@ -203,12 +205,43 @@ form input[type=submit] {
 .niet_in_stock {
 	color: #f00;
 }
-.product_rij form {
+.bestelform {
 	float: right;
 }
 .product_rij form input[type=text] {
 	width: 30px;
 	margin-right: 5px;
+}
+
+#product_overzicht {
+}
+
+#product_overzicht #foto {
+	width: 320px;
+	
+	float: left;
+}
+
+#product_overzicht #foto a {
+	float: left;
+	margin-right: 20px;
+}
+
+#product_overzicht #foto a img {
+	width: 300px;
+	height: auto;
+}
+
+#product_overzicht #info {
+	width: 694px;
+	float: left;
+}
+
+#product_overzicht #omschrijving {
+	border-top: 1px solid #ffb467;
+
+	padding-top: 10px;
+	margin-top: 20px;
 }
 
 #registreer, #aanmelden {

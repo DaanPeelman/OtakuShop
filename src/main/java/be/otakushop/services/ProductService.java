@@ -4,4 +4,5 @@ import be.otakushop.entities.Product;
 
 public interface ProductService {
 	Iterable<Product> findAll();
+	Product read(long id);
 }

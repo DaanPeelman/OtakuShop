@@ -19,4 +19,9 @@ public class ProductServiceImpl implements ProductService {
 	public Iterable<Product> findAll() {
 		return productDAO.findAll();
 	}
+	
+	@Override
+	public Product read(long id) {
+		return productDAO.read(id);
+	}
 }
