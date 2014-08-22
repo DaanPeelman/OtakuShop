@@ -1,8 +1,13 @@
 package be.otakushop.web;
 
+import org.hibernate.validator.constraints.SafeHtml;
+
 public class ZoekForm {
+	@SafeHtml
 	private String titel;
+	@SafeHtml
 	private String serie;
+	@SafeHtml
 	private String uitgever;
 	private int startPrijs;
 	private int eindPrijs;
