@@ -10,7 +10,7 @@ import be.otakushop.services.ProductService;
 
 @Controller
 @RequestMapping("/producten")
-class ProductController {
+public class ProductController {
 	private final ProductService productService;
 	
 	@Autowired
@@ -19,7 +19,7 @@ class ProductController {
 	}
 	
 	@RequestMapping(method = RequestMethod.GET)
-	ModelAndView showProducten() {
+	public ModelAndView findAll() {
 		return new ModelAndView("producten/producten", "producten", productService.findAll());
 	}
 }
