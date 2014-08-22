@@ -1,4 +1,4 @@
-package be.otaku.web;
+package be.otakushop.web;
 
 import junit.framework.Assert;
 

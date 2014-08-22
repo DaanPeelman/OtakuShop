@@ -4,10 +4,12 @@ import javax.servlet.Filter;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 
+import org.springframework.orm.jpa.support.OpenEntityManagerInViewFilter;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 import be.otakushop.dao.CreateDAOBeans;
+import be.otakushop.datasource.CreateDataSourceBean;
 import be.otakushop.services.CreateServiceBeans;
 
 public class Initializer extends AbstractAnnotationConfigDispatcherServletInitializer {
@@ -18,7 +20,7 @@ public class Initializer extends AbstractAnnotationConfigDispatcherServletInitia
 	
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
-		return new Class<?>[] { CreateDAOBeans.class, CreateServiceBeans.class };
+		return new Class<?>[] { CreateDataSourceBean.class, CreateDAOBeans.class, CreateServiceBeans.class };
 	}
 	
 	@Override
@@ -36,6 +38,6 @@ public class Initializer extends AbstractAnnotationConfigDispatcherServletInitia
 	protected Filter[] getServletFilters() {
 		CharacterEncodingFilter utf8Filter = new CharacterEncodingFilter();
 		utf8Filter.setEncoding("UTF-8");
-		return new Filter[] { utf8Filter };
+		return new Filter[] { utf8Filter, new OpenEntityManagerInViewFilter() };
 	}
 }

@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import be.otakushop.entities.Product;
 import be.otakushop.services.ProductService;
 
 @Controller
@@ -24,8 +25,8 @@ public class ProductController {
 		return new ModelAndView("producten/producten", "producten", productService.findAll());
 	}
 	
-	@RequestMapping(value = "{id}", method = RequestMethod.GET)
-	public ModelAndView read(@PathVariable long id) {
-		return new ModelAndView("producten/product", "product", productService.read(id));
+	@RequestMapping(value = "{product}", method = RequestMethod.GET)
+	public ModelAndView read(@PathVariable Product product) {
+		return new ModelAndView("producten/product", "product", product);
 	}
 }

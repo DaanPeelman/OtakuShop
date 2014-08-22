@@ -49,7 +49,7 @@
 						</div> <!-- END #info -->
 					</div> <!-- END .clearfix -->
 					<div id="omschrijving">
-						<p><c:out value='${product.omschrijving}' /></p>
+						<p><c:out value='${product.omschrijvingEn}' /></p>
 					</div> <!-- END #omschrijving -->
 				</div> <!-- END #product_overzicht -->
 			</div> <!-- END .content_wrap -->

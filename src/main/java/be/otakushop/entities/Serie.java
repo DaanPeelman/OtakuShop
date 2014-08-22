@@ -1,12 +1,26 @@
 package be.otakushop.entities;
 
+import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Serie {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "series")
+public class Serie implements Serializable {
+	private static final long serialVersionUID = 1L;
+	
+	@Id
+	@GeneratedValue
 	private long id;
 	private String titel;
+	@OneToMany(mappedBy = "serie")
 	private Set<Product> producten;
 	
 	protected Serie() {

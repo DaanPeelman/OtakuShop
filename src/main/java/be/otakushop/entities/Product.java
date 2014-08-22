@@ -1,16 +1,38 @@
 package be.otakushop.entities;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
-public class Product {
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+@Entity
+@Table(name = "producten")
+public class Product implements Serializable {
+	private static final long serialVersionUID = 1L;
+	
+	@Id
+	@GeneratedValue
 	private long id;
 	private String titel;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "serieId")
 	private Serie serie;
 	private int hoogte;
+	@Temporal(TemporalType.DATE)
 	private Date uitgifteDatum;
 	private String omschrijvingNl;
 	private String omschrijvingEn;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "uitgeverId")
 	private Uitgever uitgever;
 	private BigDecimal prijs;
 	private int stock;
