@@ -3,26 +3,34 @@ package be.otakushop.valueobjects;
 import java.io.Serializable;
 
 import javax.persistence.Embeddable;
+import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.SafeHtml;
+
+import be.otakushop.constraints.Postcode;
 
 @Embeddable
 public class Adres implements Serializable {
-	private static final long SerialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 	
 	@SafeHtml
+	@NotBlank
 	private String straat;
 	@SafeHtml
+	@NotBlank
 	private String nummer;
+	@NotNull
+	@Postcode
+	private Integer postcode;
 	@SafeHtml
-	private int postcode;
-	@SafeHtml
+	@NotBlank
 	private String gemeente;
 	
 	protected Adres() {
 	}
 	
-	public Adres(String straat, String nummer, int postcode, String gemeente) {
+	public Adres(String straat, String nummer, Integer postcode, String gemeente) {
 		setStraat(straat);
 		setNummer(nummer);
 		setPostcode(postcode);
@@ -45,11 +53,11 @@ public class Adres implements Serializable {
 		this.nummer = nummer;
 	}
 
-	public int getPostcode() {
+	public Integer getPostcode() {
 		return postcode;
 	}
 
-	protected void setPostcode(int postcode) {
+	protected void setPostcode(Integer postcode) {
 		this.postcode = postcode;
 	}
 

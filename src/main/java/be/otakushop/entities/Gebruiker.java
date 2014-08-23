@@ -13,7 +13,13 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+import javax.validation.Valid;
 
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotBlank;
+
+import be.otakushop.constraints.Wachtwoord;
 import be.otakushop.valueobjects.Adres;
 
 @Entity
@@ -24,12 +30,21 @@ public class Gebruiker implements Serializable {
 	@Id
 	@GeneratedValue
 	private long id;
+	@NotBlank
 	private String voornaam;
+	@NotBlank
 	private String familienaam;
 	@Embedded
+	@Valid
 	private Adres adres;
+	@NotBlank
+	@Email
 	private String emailadres;
+	@NotBlank
+	@Wachtwoord
 	private String wachtwoord;
+	@Transient
+	private String wachtwoordBevestig;
 	@OneToMany(mappedBy = "gebruiker")
 	@OrderBy("datum DESC")
 	private Set<Bestelbon> bestellingen;
@@ -37,7 +52,8 @@ public class Gebruiker implements Serializable {
 	private Set<Rol> rollen;
 	private boolean actief;
 	
-	protected Gebruiker() {
+	public Gebruiker() {
+		this.bestellingen = new HashSet<>();
 		this.rollen = new HashSet<>();
 	}
 
@@ -47,6 +63,7 @@ public class Gebruiker implements Serializable {
 		setAdres(adres);
 		setEmailadres(emailadres);
 		setWachtwoord(wachtwoord);
+		this.bestellingen = new HashSet<>();
 		this.rollen = new HashSet<>();
 		setActief(true);
 	}
@@ -60,6 +77,10 @@ public class Gebruiker implements Serializable {
 		setWachtwoord(wachtwoord);
 		this.rollen = new HashSet<>();
 		setActief(true);
+	}
+	
+	public boolean isValid() {
+		return wachtwoord.equals(wachtwoordBevestig);
 	}
 
 	public long getId() {
@@ -108,6 +129,14 @@ public class Gebruiker implements Serializable {
 
 	public void setWachtwoord(String wachtwoord) {
 		this.wachtwoord = wachtwoord;
+	}
+	
+	public String getWachtwoordBevestig() {
+		return wachtwoordBevestig;
+	}
+	
+	public void setWachtwoordBevestig(String wachtwoord) {
+		this.wachtwoordBevestig = wachtwoord;
 	}
 	
 	public Set<Bestelbon> getBestellingen() {
