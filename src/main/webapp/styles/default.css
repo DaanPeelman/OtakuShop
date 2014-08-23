@@ -12,7 +12,7 @@ ul {font-size: 1.4em; letter-spacing: 0.01em;}
 table {font-size: 1.4em; letter-spacing: 0.01em;}
 table thead {text-align: center;}
 table td {padding: 5px 5px;}
-input[type=text], input[type=password], select {margin-bottom: 1em;}
+input[type=text], input[type=password], select {}
 form p {font-size: 1.5em; margin-bottom: 0.1em;}
 form input[type=submit] {
 	font-size: 1.03em;
@@ -22,6 +22,9 @@ form input[type=submit] {
     cursor:pointer;
 	height: 22px;
     border: none;
+}
+form div {
+	margin-bottom: 1.5em;
 }
 
 
@@ -344,6 +347,11 @@ span.prijs {
     cursor:pointer;
 	height: 22px;
     border: none;
+}
+
+.fout {
+	font-size: 0.8em;
+	color: #f00;
 }
 
 #footer {

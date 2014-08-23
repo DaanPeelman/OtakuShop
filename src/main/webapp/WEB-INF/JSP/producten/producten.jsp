@@ -82,22 +82,34 @@
 					<c:url var="zoekurl" value='/producten' />
 					<form:form id="zoekform" commandName="zoekForm" action="${zoekurl}" method="get">
 						<h2>Verfijn</h2>
+						<div>
 						<p><form:label path="titel" for="naam">Naam:</form:label></p>
 						<p><form:input path="titel" type="text" id="naam" title="voer een naam in" /></p>
+						</div>
+						<div>
 						<p><form:label path="serie" for="serie">Serie:</form:label></p>
 						<p><form:input path="serie" type="text" id="serie" title="voer een serie in" /></p>
+						</div>
+						<div>
 						<p><form:label path="uitgever" for="uitgever">Uitgever:</form:label></p>
 						<p><form:select path="uitgever" id="uitgever" title="selecteer een uitgever">
 							<form:option value="-" label="-" />
 							<form:options items="${uitgevers}" />
 						</form:select></p>
+						</div>
+						<div>
 						<p><label>Prijs:</label></p>
 						<p class="slidertekst clearfix"><form:input path="startPrijs" type="text" id="vanPrijs" title="startprijs" readonly="readonly" /><form:input path="eindPrijs" type="text" id="totPrijs" title="eindprijs" readonly="readonly" /></p>
 						<div class="slider" id="slider-range-prijs" title="selecteer een prijs gebied" ></div>
+						</div>
+						<div>
 						<p><label>Datum:</label></p>
 						<p class="slidertekst clearfix"><form:input path="startJaar" type="text" id="vanDatum" title="startdatum" readonly="readonly" /><form:input path="eindJaar" type="text" id="totDatum" title="einddatum" readonly="readonly" /></p>
 						<div class="slider" id="slider-range-datum" title="selecteer datum gebied" ></div>
+						</div>
+						<div>
 						<p><input type="submit" value="Zoek" title="verfijn uw zoekresultaten" /></p>
+						</div>
 					</form:form>
 				</div> <!-- END .aside -->
 				<div id="zoek_resultaten">

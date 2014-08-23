@@ -12,6 +12,10 @@ public class WachtwoordValidator implements ConstraintValidator<Wachtwoord, Stri
 	
 	@Override
 	public boolean isValid(String wachtwoord, ConstraintValidatorContext context) {
+		if(wachtwoord == null || wachtwoord.equalsIgnoreCase("")) {
+			return true;
+		}
+		
 		return wachtwoord.matches(WACHTWOORD_REGEX);
 	}
 }
