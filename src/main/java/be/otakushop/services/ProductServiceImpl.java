@@ -142,17 +142,9 @@ class ProductServiceImpl implements ProductService {
 		}
 		
 		if(zoekform.getUitgever() != null && !zoekform.getUitgever().equals("-")) {
-			Iterable<Uitgever> uitgevers = uitgeverDAO.findByNaamContains(zoekform.getUitgever());
+			Uitgever uitgever = uitgeverDAO.findByNaam(zoekform.getUitgever());
 			for(Product product:mapProducten.values()) {
-				boolean gevonden = false;
-				
-				for(Uitgever uitgever:uitgevers) {
-					if(product.getUitgever() == uitgever) {
-						gevonden = true;
-					}
-				}
-				
-				if(gevonden == false) {
+				if(product.getUitgever() != uitgever) {
 					mapProducten.remove(product.getId());
 				}
 			}

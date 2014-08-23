@@ -1,8 +1,10 @@
 package be.otakushop.web;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -39,18 +41,22 @@ public class ProductController {
 	}
 	
 	@RequestMapping(method = RequestMethod.GET, params = {"titel", "serie", "uitgever", "startPrijs", "eindPrijs", "startJaar", "eindJaar"})
-	public ModelAndView find(@ModelAttribute ZoekForm zoekForm) {
+	public ModelAndView find(@Valid ZoekForm zoekForm, BindingResult bindingResult) {
 		ModelAndView modelAndView = new ModelAndView("producten/producten");
 		
-		modelAndView.addObject("producten", productService.findByZoektermen(zoekForm));
-		modelAndView.addObject("uitgevers", uitgeverService.findAll());
+		if(!bindingResult.hasErrors()) {
+			modelAndView.addObject("producten", productService.findByZoektermen(zoekForm));
+			modelAndView.addObject("uitgevers", uitgeverService.findAll());
+			
+			modelAndView.addObject("selectStartPrijs", zoekForm.getStartPrijs());
+			modelAndView.addObject("selectEindPrijs", zoekForm.getEindPrijs());
+			modelAndView.addObject("selectStartJaar", zoekForm.getStartJaar());
+			modelAndView.addObject("selectEindJaar", zoekForm.getEindJaar());
+		}
+		
 		modelAndView.addObject("maxPrijs", productService.findMaxPrijs());
 		modelAndView.addObject("minDatum", productService.findMinDatum());
 		modelAndView.addObject("maxDatum", productService.findMaxDatum());
-		modelAndView.addObject("selectStartPrijs", zoekForm.getStartPrijs());
-		modelAndView.addObject("selectEindPrijs", zoekForm.getEindPrijs());
-		modelAndView.addObject("selectStartJaar", zoekForm.getStartJaar());
-		modelAndView.addObject("selectEindJaar", zoekForm.getEindJaar());
 		
 		return modelAndView;
 	}

@@ -139,6 +139,9 @@
 					</div> <!-- END .product_rij -->
 					</c:forEach>
 					</c:if>
+					<c:if test="${empty producten}">
+						<p>Er zijn geen producten gevonden</p>
+					</c:if>
 				</div> <!-- END #zoek_resultaten -->
 			</div> <!-- END .content_wrap -->
 		</div> <!-- END #main_content -->
