@@ -110,5 +110,15 @@
 			<version>[2.3,]</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>[3.2,3.99]</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-taglibs</artifactId>
+			<version>[3.2,3.99]</version>
+		</dependency>
 	</dependencies>
 </project>

@@ -1,9 +1,22 @@
 package be.otakushop.valueobjects;
 
-public class Adres {
+import java.io.Serializable;
+
+import javax.persistence.Embeddable;
+
+import org.hibernate.validator.constraints.SafeHtml;
+
+@Embeddable
+public class Adres implements Serializable {
+	private static final long SerialVersionUID = 1L;
+	
+	@SafeHtml
 	private String straat;
+	@SafeHtml
 	private String nummer;
+	@SafeHtml
 	private int postcode;
+	@SafeHtml
 	private String gemeente;
 	
 	protected Adres() {
@@ -16,7 +29,7 @@ public class Adres {
 		setGemeente(gemeente);
 	}
 
-	protected String getStraat() {
+	public String getStraat() {
 		return straat;
 	}
 
@@ -24,7 +37,7 @@ public class Adres {
 		this.straat = straat;
 	}
 
-	protected String getNummer() {
+	public String getNummer() {
 		return nummer;
 	}
 
@@ -32,7 +45,7 @@ public class Adres {
 		this.nummer = nummer;
 	}
 
-	protected int getPostcode() {
+	public int getPostcode() {
 		return postcode;
 	}
 
@@ -40,7 +53,7 @@ public class Adres {
 		this.postcode = postcode;
 	}
 
-	protected String getGemeente() {
+	public String getGemeente() {
 		return gemeente;
 	}
 

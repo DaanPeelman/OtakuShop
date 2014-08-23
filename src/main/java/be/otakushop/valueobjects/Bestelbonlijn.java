@@ -1,22 +1,33 @@
 package be.otakushop.valueobjects;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
+
+import javax.persistence.Embeddable;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 import be.otakushop.entities.Bestelbon;
 import be.otakushop.entities.Product;
 
-public class Bestelbonlijn {
+@Embeddable
+@Table(name = "bestelbonlijnen")
+public class Bestelbonlijn implements Serializable {
+	private static final long serialVersionUID = 1L;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "productId")
 	private Product product;
-	private Bestelbon bestelbon;
 	private int aantal;
 	private BigDecimal prijs;
 	
 	protected Bestelbonlijn() {
 	}
 
-	public Bestelbonlijn(Product product, Bestelbon bestelbon, int aantal, BigDecimal prijs) {
+	public Bestelbonlijn(Product product, int aantal, BigDecimal prijs) {
 		this.product = product;
-		this.bestelbon = bestelbon;
 		this.aantal = aantal;
 		this.prijs = prijs;
 	}
@@ -27,22 +38,6 @@ public class Bestelbonlijn {
 
 	public void setProduct(Product product) {
 		this.product = product;
-	}
-
-	public Bestelbon getBestelbon() {
-		return bestelbon;
-	}
-
-	public void setBestelbon(Bestelbon bestelbon) {
-		if(this.bestelbon != null && this.bestelbon.getBestelbonlijnen().contains(this)) {
-			this.bestelbon.removeBestelbonlijn(this);
-		}
-		
-		this.bestelbon = bestelbon;
-		
-		if(bestelbon != null && !bestelbon.getBestelbonlijnen().contains(this)) {
-			bestelbon.addBestelbonlijn(this);
-		}
 	}
 
 	public int getAantal() {
@@ -91,7 +86,7 @@ public class Bestelbonlijn {
 
 	@Override
 	public String toString() {
-		return "Bestelbonlijn [product=" + product + ", bestelbon=" + bestelbon
-				+ ", aantal=" + aantal + ", prijs=" + prijs + "]";
+		return "Bestelbonlijn [product=" + product + ", aantal=" + aantal
+				+ ", prijs=" + prijs + "]";
 	}
 }

@@ -8,7 +8,7 @@
 					<li><a href="about.html" title="meer informatie over ons">About us</a></li>
 					<li><a href="#" title="bekijk en wijzig uw gegevens">Gegevens</a></li>
 					<li><a href="#" title="beheer de producten">Beheer</a></li>
-					<li class="right"><a href="login.html" title="meld u aan">Aanmelden</a></li>
+					<li class="right"><a href="<c:url value='gebruiker/login' />" title="meld u aan">Aanmelden</a></li>
 					<li class="right"><a href="mandje.html" title="bekijk uw mandje">Mandje</a></li>
 				</ul>
 			</div> <!-- END .content_wrap -->

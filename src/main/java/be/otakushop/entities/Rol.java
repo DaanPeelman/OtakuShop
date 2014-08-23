@@ -1,24 +1,35 @@
 package be.otakushop.entities;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Rol {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "rollen")
+public class Rol implements Serializable {
+	private static final long serialVersionUID = 1L;
+	
+	@Id
+	@GeneratedValue
 	private long id;
-	private long naam;
+	private String naam;
+	@ManyToMany
+	@JoinTable(name = "gebruikersrollen", joinColumns = @JoinColumn(name = "rolId"), inverseJoinColumns = @JoinColumn(name = "gebruikerId"))
 	private Set<Gebruiker> gebruikers;
 	
 	protected Rol() {
 		this.gebruikers = new HashSet<>();
 	}
 
-	public Rol(long naam) {
-		setNaam(naam);
-		this.gebruikers = new HashSet<>();
-	}
-
-	public Rol(long id, long naam) {
-		setId(id);
+	public Rol(String naam) {
 		setNaam(naam);
 		this.gebruikers = new HashSet<>();
 	}
@@ -31,11 +42,11 @@ public class Rol {
 		this.id = id;
 	}
 
-	public long getNaam() {
+	public String getNaam() {
 		return naam;
 	}
 
-	public void setNaam(long naam) {
+	public void setNaam(String naam) {
 		this.naam = naam;
 	}
 
@@ -67,7 +78,7 @@ public class Rol {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + (int) (naam ^ (naam >>> 32));
+		result = prime * result + ((naam == null) ? 0 : naam.hashCode());
 		return result;
 	}
 
@@ -80,7 +91,10 @@ public class Rol {
 		if (getClass() != obj.getClass())
 			return false;
 		Rol other = (Rol) obj;
-		if (naam != other.naam)
+		if (naam == null) {
+			if (other.naam != null)
+				return false;
+		} else if (!naam.equals(other.naam))
 			return false;
 		return true;
 	}

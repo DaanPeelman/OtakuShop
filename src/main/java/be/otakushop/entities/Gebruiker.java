@@ -1,18 +1,39 @@
 package be.otakushop.entities;
 
+import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
+import javax.persistence.Table;
+
 import be.otakushop.valueobjects.Adres;
 
-public class Gebruiker {
+@Entity
+@Table(name = "gebruikers")
+public class Gebruiker implements Serializable {
+	private static final long serialVersionUID = 1L;
+	
+	@Id
+	@GeneratedValue
 	private long id;
 	private String voornaam;
 	private String familienaam;
+	@Embedded
 	private Adres adres;
 	private String emailadres;
 	private String wachtwoord;
+	@OneToMany(mappedBy = "gebruiker")
+	@OrderBy("datum DESC")
+	private Set<Bestelbon> bestellingen;
+	@ManyToMany(mappedBy = "gebruikers")
 	private Set<Rol> rollen;
 	private boolean actief;
 	
@@ -87,6 +108,30 @@ public class Gebruiker {
 
 	public void setWachtwoord(String wachtwoord) {
 		this.wachtwoord = wachtwoord;
+	}
+	
+	public Set<Bestelbon> getBestellingen() {
+		return Collections.unmodifiableSet(bestellingen);
+	}
+	
+	public void setBestellingen(Set<Bestelbon> bestellingen) {
+		this.bestellingen = bestellingen;
+	}
+	
+	public void addBestelling(Bestelbon bestelling) {
+		bestellingen.add(bestelling);
+		
+		if(!bestelling.getBestelbonlijnen().contains(this)) {
+			bestelling.setGebruiker(this);
+		}
+	}
+	
+	public void removeBestelling(Bestelbon bestelling) {
+		if(bestelling.getGebruiker() == this) {
+			bestelling.setGebruiker(null);
+		}
+		
+		bestellingen.remove(bestelling);
 	}
 	
 	public Set<Rol> getRollen() {
