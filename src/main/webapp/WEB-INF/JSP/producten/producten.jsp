@@ -99,12 +99,12 @@
 						</div>
 						<div>
 						<p><label>Prijs:</label></p>
-						<p class="slidertekst clearfix"><form:input path="startPrijs" type="text" id="vanPrijs" title="startprijs" readonly="readonly" /><form:input path="eindPrijs" type="text" id="totPrijs" title="eindprijs" readonly="readonly" /></p>
+						<p class="slidertekst clearfix"><form:input path="startPrijs" type="text" id="vanPrijs" title="startprijs" readonly="true" /><form:input path="eindPrijs" type="text" id="totPrijs" title="eindprijs" readonly="true" /></p>
 						<div class="slider" id="slider-range-prijs" title="selecteer een prijs gebied" ></div>
 						</div>
 						<div>
 						<p><label>Datum:</label></p>
-						<p class="slidertekst clearfix"><form:input path="startJaar" type="text" id="vanDatum" title="startdatum" readonly="readonly" /><form:input path="eindJaar" type="text" id="totDatum" title="einddatum" readonly="readonly" /></p>
+						<p class="slidertekst clearfix"><form:input path="startJaar" type="text" id="vanDatum" title="startdatum" readonly="true" /><form:input path="eindJaar" type="text" id="totDatum" title="einddatum" readonly="true" /></p>
 						<div class="slider" id="slider-range-datum" title="selecteer datum gebied" ></div>
 						</div>
 						<div>
