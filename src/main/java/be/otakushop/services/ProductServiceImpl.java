@@ -141,7 +141,7 @@ class ProductServiceImpl implements ProductService {
 			}
 		}
 		
-		if(zoekform.getUitgever() != null && !zoekform.getUitgever().equals("-")) {
+		if(zoekform.getUitgever() != null && !zoekform.getUitgever().equals("") && !zoekform.getUitgever().equals("-")) {
 			Uitgever uitgever = uitgeverDAO.findByNaam(zoekform.getUitgever());
 			for(Product product:mapProducten.values()) {
 				if(product.getUitgever() != uitgever) {
