@@ -11,7 +11,7 @@
 					<li><a href="#" title="beheer de producten">Beheer</a></li>
 					<security:authorize access="isAnonymous()"><li class="right"><a href="<c:url value='/login' />" title="meld u aan">Aanmelden</a></li></security:authorize>
 					<security:authorize access="isAuthenticated()"><li class="right"><form method="post" action="<c:url value='/logout' />" id="logoutform"><input type="submit" value="Afmelden" id="logoutbutton" title="meld u af"/><security:csrfInput /></form></li></security:authorize>
-					<li class="right"><a href="mandje.html" title="bekijk uw mandje">Mandje</a></li>
+					<li class="right"><a href="<c:url value='/mandje' />" title="bekijk uw mandje">Mandje</a></li>
 				</ul>
 			</div> <!-- END .content_wrap -->
 		</div> <!-- END #menu -->
