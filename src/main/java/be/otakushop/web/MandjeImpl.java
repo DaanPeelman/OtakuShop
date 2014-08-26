@@ -37,6 +37,7 @@ class MandjeImpl implements Mandje {
 		producten.clear();
 	}
 
+	@Override
 	public Map<Long, Integer> getProducten() {
 		return producten;
 	}
@@ -45,6 +46,7 @@ class MandjeImpl implements Mandje {
 		this.producten = producten;
 	}
 
+	@Override
 	public Adres getAdres() {
 		return adres;
 	}

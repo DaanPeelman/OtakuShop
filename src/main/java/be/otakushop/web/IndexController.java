@@ -3,6 +3,7 @@ package be.otakushop.web;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import be.otakushop.services.ProductService;
@@ -17,8 +18,13 @@ public class IndexController {
 		this.productService = productService;
 	}
 	
-	@RequestMapping
+	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView index() {
-		return new ModelAndView("index", "producten", productService.findNieuwsteProducten());
+		ModelAndView modelAndView = new ModelAndView("index");
+		
+		modelAndView.addObject("producten", productService.findNieuwsteProducten());
+		modelAndView.addObject("productAankoopForm", new ProductAankoopForm());
+		
+		return modelAndView;
 	}
 }

@@ -39,7 +39,7 @@ public class Bestelbon implements Serializable {
 	@CollectionTable(name = "bestelbonlijnen", joinColumns = @JoinColumn(name = "bestelbonId"))
 	private Set<Bestelbonlijn> bestelbonlijnen;
 	
-	protected Bestelbon() {
+	public Bestelbon() {
 		this.bestelbonlijnen = new HashSet<>();
 	}
 

@@ -30,6 +30,7 @@ public class ProductController {
 	public ModelAndView findAll() {
 		ModelAndView modelAndView = new ModelAndView("producten/producten");
 		
+		modelAndView.addObject("productAankoopForm", new ProductAankoopForm());
 		modelAndView.addObject("producten", productService.findAll());
 		modelAndView.addObject("uitgevers", uitgeverService.findAll());
 		modelAndView.addObject("maxPrijs", productService.findMaxPrijs());
@@ -62,7 +63,12 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value = "{product}", method = RequestMethod.GET)
-	public ModelAndView read(@PathVariable Product product) {
-		return new ModelAndView("producten/product", "product", product);
+	public ModelAndView view(@PathVariable Product product) {
+		ModelAndView modelAndView = new ModelAndView("producten/product");
+		
+		modelAndView.addObject("productAankoopForm", new ProductAankoopForm());
+		modelAndView.addObject("product", product);
+		
+		return modelAndView;
 	}
 }

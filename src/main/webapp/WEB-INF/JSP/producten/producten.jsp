@@ -115,6 +115,7 @@
 				<div id="zoek_resultaten">
 					<h2>Onze producten</h2>
 					<c:if test="${not empty producten}">
+					<c:url var="url" value="/mandje" />
 					<c:forEach var="product" items="${producten}">
 					<spring:url var="producturl" value="/producten/{id}">
 						<spring:param name="id" value="${product.id}" />
@@ -130,11 +131,11 @@
 							<c:if test="${(product.stock > 1) && (product.stock < 4)}"><p class="stock laatste_in_stock clearfix">Laatste ${product.stock} in voorraad</p></c:if>
 							<c:if test="${product.stock > 3}"><p class="stock in_stock clearfix">In voorraad</p></c:if>
 							<span class="prijs">&euro;<fmt:formatNumber value="${product.prijs}" minFractionDigits="2" maxFractionDigits="2"/></span>
-							<form class="bestelform" action="#" method="post">
-								<p><label>Aantal:
-								<input type="text" value="1" title="voer het aantal in dat u wil bestellen" /></label>
+							<form:form class="bestelform" commandName="productAankoopForm" action="${url}" method="post">
+								<p><form:input path="productId" type="hidden" value="${product.id}" /><form:label path="aantal">Aantal:
+								<form:input path="aantal" type="text" title="voer het aantal in dat u wil bestellen" /></form:label>
 								<input type="submit" value="Voeg toe aan mandje" <c:if test="${product.stock > 0}">title="voeg dit product toe aan uw mandje"</c:if><c:if test="${product.stock == 0}">title="dit product is niet meer in voorraad" disabled="disabled"</c:if> /></p>
-							</form>
+							</form:form>
 						</div> <!-- END .info -->
 					</div> <!-- END .product_rij -->
 					</c:forEach>

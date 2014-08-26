@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -25,6 +26,7 @@
 				<p>Donec at vehicula lacus. Ut vitae erat ut tellus euismod posuere. Pellentesque ultrices libero ut lectus semper vestibulum. Morbi ullamcorper pharetra facilisis. Phasellus malesuada aliquam iaculis. Nulla bibendum pulvinar velit, at malesuada lacus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam at facilisis tellus. Vestibulum tincidunt ipsum in quam aliquet vulputate. Donec porta sapien sit amet lectus pretium porttitor. Sed nulla lacus, sodales et dapibus nec, adipiscing a sapien. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Quisque cursus turpis lacinia odio sodales, nec rhoncus libero feugiat. Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
 				<h2>Nieuwste producten</h2>
 				<div id="laatste_producten">
+				<c:url var="url" value="/mandje" />
 					<c:forEach var='product' items='${producten}'>
 					<spring:url var="producturl" value="/producten/{id}">
 						<spring:param name="id" value="${product.id}" />
@@ -37,11 +39,11 @@
 								<h3><a href="${producturl}" title="meer details over <c:out value='${product.titel}' />"><c:out value='${product.titel}' /></a></h3>
 								<p><c:out value='${product.omschrijvingEn}' /></p>
 								<span class="prijs">&euro;<fmt:formatNumber value='${product.prijs}' minFractionDigits="2" maxFractionDigits="2"/></span>
-								<form class="bestelform" action="#" method="post">
-									<p><label>Aantal:
-									<input type="text" value="1" title="voer het aantal in dat u wil bestellen" /></label>
+								<form:form class="bestelform" commandName="productAankoopForm" action="${url}" method="post">
+									<p><form:input path="productId" type="hidden" value="${product.id}"/><form:label path="aantal">Aantal:
+									<form:input path="aantal" type="text" title="voer het aantal in dat u wil bestellen" /></form:label>
 									<input type="submit" value="Voeg toe aan mandje" title="voeg dit product toe aan uw mandje" /></p>
-								</form>
+								</form:form>
 							</div> <!-- END .info -->
 						</div> <!-- END .product_rij -->
 					</c:forEach>

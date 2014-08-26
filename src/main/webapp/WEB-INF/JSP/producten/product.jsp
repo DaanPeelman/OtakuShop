@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -26,6 +27,7 @@
 			<div class="content_wrap clearfix">
 				<p><a href="<c:url value='/producten' />" title="terug naar productoverzicht">&lt; Terug naar productoverzicht</a></p>
 				<div id="product_overzicht">
+				<c:url var="url" value="/mandje" />
 					<div class="clearfix">
 						<div id="foto">
 							<a href="${pageContext.servletContext.contextPath}/images/producten/${product.id}.jpg" title="<c:out value='${product.titel}' />" rel="lightbox"><img src="${pageContext.servletContext.contextPath}/images/producten/${product.id}.jpg" alt="<c:out value='${product.titel}' />" /></a>
@@ -41,11 +43,11 @@
 							<c:if test='${(product.stock > 1) && (product.stock < 4)}'><p class="stock laatste_in_stock clearfix">Laatste ${product.stock} in voorraad</p></c:if>
 							<c:if test='${product.stock > 3}'><p class="stock in_stock clearfix">In voorraad</p></c:if>
 							<span class="prijs">&euro;<fmt:formatNumber value='${product.prijs}' minFractionDigits='2' maxFractionDigits='2' /></span>
-							<form class="bestelform" action="#" method="post">
-								<p><label>Aantal:
-								<input type="text" value="1" title="voer het aantal in dat u wil bestellen" /></label>
+							<form:form class="bestelform" commandName="productAankoopForm" action="${url}" method="post">
+								<p><form:input path="productId" type="hidden" value="${product.id}" /><form:label path="aantal" for="aantal">Aantal:</form:label>
+								<form:input path="aantal" id="aantal" type="text" title="voer het aantal in dat u wil bestellen" />
 								<input type="submit" value="Voeg toe aan mandje" <c:if test="${product.stock > 0}">title="voeg dit product toe aan uw mandje"</c:if><c:if test="${product.stock == 0}">title="dit product is niet meer in voorraad" disabled="disabled"</c:if> /></p>
-							</form>
+							</form:form>
 						</div> <!-- END #info -->
 					</div> <!-- END .clearfix -->
 					<div id="omschrijving">
