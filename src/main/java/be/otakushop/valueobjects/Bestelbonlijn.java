@@ -9,7 +9,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import be.otakushop.entities.Bestelbon;
 import be.otakushop.entities.Product;
 
 @Embeddable
