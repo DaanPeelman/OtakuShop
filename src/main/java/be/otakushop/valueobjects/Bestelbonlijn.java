@@ -23,7 +23,7 @@ public class Bestelbonlijn implements Serializable {
 	private int aantal;
 	private BigDecimal prijs;
 	
-	protected Bestelbonlijn() {
+	public Bestelbonlijn() {
 	}
 
 	public Bestelbonlijn(Product product, int aantal, BigDecimal prijs) {

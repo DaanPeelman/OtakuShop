@@ -33,7 +33,7 @@ public class CreateSecurityFilter extends WebSecurityConfigurerAdapter {
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.formLogin().defaultSuccessUrl("/producten").loginPage("/login").and().logout().logoutSuccessUrl("/").and().authorizeRequests().antMatchers("/producten").hasAuthority("klant").and().exceptionHandling().accessDeniedPage("/WEB-INF/JSP/forbidden.jsp");
+		http.formLogin().defaultSuccessUrl("/", false).loginPage("/login").and().logout().logoutSuccessUrl("/").and().authorizeRequests().antMatchers("/bestellingen").hasAuthority("klant").and().exceptionHandling().accessDeniedPage("/WEB-INF/JSP/forbidden.jsp");
 	}
 
 }

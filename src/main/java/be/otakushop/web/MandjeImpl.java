@@ -51,6 +51,7 @@ class MandjeImpl implements Mandje {
 		return adres;
 	}
 
+	@Override
 	public void setAdres(Adres adres) {
 		this.adres = adres;
 	}

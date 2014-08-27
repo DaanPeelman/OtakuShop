@@ -1,29 +1,25 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>Uw mandje - OtakuShop</title>
-	<jsp:include page="head.jsp" />
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Uw bestelling is geplaatst - OtakuShop</title>
+	<jsp:include page="../head.jsp" />
 </head>
 <body>
 	<div id="wrapper">
-		<jsp:include page="menu.jsp" />
+		<jsp:include page="../menu.jsp" />
 		<div id="header" class="clearfix">
 			<div class="content_wrap">
-				<a href="index.html" title="OtakuShop"><img src="${pageContext.servletContext.contextPath}/images/logo.gif" alt="OtakuShop" /></a>
+				<a href="<c:url value='/' />" title="OtakuShop"><img src="${pageContext.servletContext.contextPath}/images/logo.gif" alt="OtakuShop" /></a>
 			</div> <!-- END .content_wrap -->
 		</div> <!-- END #header -->
 		<div id="main_content" class="clearfix">
 			<div class="content_wrap clearfix">
-			<c:url value='/producten' var="productenurl" />
-				<p><a href="${productenurl}" title="terug naar productoverzicht">&lt; Verder shoppen</a></p>
-				<h2>Uw mandje</h2>
-				<c:if test="${not empty mandje}">
+				<p><a href="producten.html" title="terug naar productoverzicht">&lt; Verder shoppen</a></p>
+				<h2>Uw bestelling is succesvol geplaatst</h2>
 				<table id="winkelmandje">
 					<thead>
 						<tr>
@@ -34,17 +30,18 @@
 						</tr>
 					</thead>
 					<tbody>
-					<c:forEach var="bestellijn" items="${mandje.bestelbonlijnen}">
-					<spring:url var="producturl" value="/producten/{id}">
-						<spring:param name="id" value="${bestellijn.product.id}" />
-					</spring:url>
 						<tr>
-							<td class="product_mandje"><img src="${pageContext.servletContext.contextPath}/images/producten/${bestellijn.product.id}.jpg" alt="${bestellijn.product.titel}"/><h3><a href="${producturl}" title="meer details over ${bestellijn.product.titel}">${bestellijn.product.titel}</a></h3>&euro;<fmt:formatNumber value="${bestellijn.product.prijs}" minFractionDigits="2" maxFractionDigits="2" /></td>
+							<td class="product_mandje"><img src="images/nadeko.jpg" alt="Nendoroid Nadeko"/><h3><a href="product.html" title="meer details over Nendoroid Nadeko Sengoku">Nendoroid Nadeko Sengoku</a></h3>&euro;43.77</td>
 							<td><input type="text" value="1" title="voer het aantal in dat u wil bestellen" /></td>
 							<td class="prijs">&euro;43.77</td>
 							<td><form action="#" method="post"><div><input type="submit" value="X" title="verwijder dit product uit uw mandje" class="delete_btn" /></div></form></td>
 						</tr>
-					</c:forEach>
+						<tr>
+							<td class="product_mandje"><h3><img src="images/shimakaze.jpg" alt="Nendoroid Shimakaze"/><a href="#" title="meer details over Nendoroid Shimakaze">Nendoroid Shimakaze</a></h3>&euro;49.77</td>
+							<td><input type="text" value="2" title="voer het aantal in dat u wil bestellen" /></td>
+							<td class="prijs">&euro;99.54</td>
+							<td><form action="#" method="post"><div><input type="submit" value="X" title="verwijder dit product uit uw mandje" class="delete_btn" /></div></form></td>
+						</tr>
 						<tr>
 							<td>&nbsp;</td>
 							<td class="winkelmandje_overzicht totaal">Totaal:</td>
@@ -65,14 +62,10 @@
 					<p><input type="text" id="gemeente" title="voer uw gemeente in" /></p>
 					<p><input type="submit" value="Bestelling afronden" title="rond uw bestelling af" /></p>
 				</form>
-				</c:if>
-				<c:if test="${empty mandje}">
-					<p>Er zijn geen producten in uw mandje.</p>
-				</c:if>
 			</div> <!-- END .content_wrap -->
 		</div> <!-- END #main_content -->
 		<div class="push"></div>
 	</div> <!-- END #wrapper -->
-	<jsp:include page="footer.jsp" />
+	<jsp:include page="../footer.jsp" />
 </body>
 </html>

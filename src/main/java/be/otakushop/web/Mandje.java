@@ -10,4 +10,5 @@ public interface Mandje {
 	void clearMandje();
 	Map<Long, Integer> getProducten();
 	Adres getAdres();
+	void setAdres(Adres adres);
 }

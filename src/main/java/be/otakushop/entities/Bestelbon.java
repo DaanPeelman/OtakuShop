@@ -17,9 +17,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.Valid;
 
 import be.otakushop.valueobjects.Adres;
 import be.otakushop.valueobjects.Bestelbonlijn;
+import be.otakushop.web.AdresForm;
 
 @Entity
 @Table(name = "bestelbonnen")
@@ -33,6 +35,7 @@ public class Bestelbon implements Serializable {
 	@JoinColumn(name = "gebruikerId")
 	private Gebruiker gebruiker;
 	@Embedded
+	@Valid
 	private Adres leverAdres;
 	private Date datum;
 	@ElementCollection
@@ -41,6 +44,7 @@ public class Bestelbon implements Serializable {
 	
 	public Bestelbon() {
 		this.bestelbonlijnen = new HashSet<>();
+		leverAdres = new AdresForm();
 	}
 
 	public Bestelbon(Gebruiker gebruiker, Adres leverAdres) {
@@ -99,7 +103,7 @@ public class Bestelbon implements Serializable {
 	}
 
 	public Set<Bestelbonlijn> getBestelbonlijnen() {
-		return Collections.unmodifiableSet(bestelbonlijnen);
+		return bestelbonlijnen;
 	}
 
 	public void setBestelbonlijnen(Set<Bestelbonlijn> bestelbonlijnen) {

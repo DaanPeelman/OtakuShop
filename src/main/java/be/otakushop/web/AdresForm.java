@@ -2,13 +2,13 @@ package be.otakushop.web;
 
 import be.otakushop.valueobjects.Adres;
 
-class AdresForm extends Adres {
+public class AdresForm extends Adres {
 	private static final long serialVersionUID = 1L;
 	
-	AdresForm() {
+	public AdresForm() {
 	}
 	
-	AdresForm(Adres adres) {
+	public AdresForm(Adres adres) {
 		setStraat(adres.getStraat());
 		setNummer(adres.getNummer());
 		setPostcode(adres.getPostcode());
