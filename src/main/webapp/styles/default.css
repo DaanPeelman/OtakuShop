@@ -93,6 +93,10 @@ form div {
 	color: #ffdebc;
 }
 
+.small {
+	font-size: 0.75em;
+}
+
 #header {
 	text-align: center;
 	
