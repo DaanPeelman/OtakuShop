@@ -46,6 +46,7 @@ public class ProductController {
 		ModelAndView modelAndView = new ModelAndView("producten/producten");
 		
 		if(!bindingResult.hasErrors()) {
+			modelAndView.addObject("productAankoopForm", new ProductAankoopForm());
 			modelAndView.addObject("producten", productService.findByZoektermen(zoekForm));
 			modelAndView.addObject("uitgevers", uitgeverService.findAll());
 			
