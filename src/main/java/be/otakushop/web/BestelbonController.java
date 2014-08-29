@@ -21,7 +21,7 @@ import be.otakushop.valueobjects.Bestelbonlijn;
 
 @Controller
 @RequestMapping("bestellingen")
-class BestellbonController {
+class BestelbonController {
 	private final BestelbonService bestelbonService;
 	private final ProductService productService;
 	private final GebruikerService gebruikerService;
@@ -29,7 +29,7 @@ class BestellbonController {
 	private Mandje mandje;
 	
 	@Autowired
-	public BestellbonController(BestelbonService bestelbonService, ProductService productService, GebruikerService gebruikerService, Mandje mandje) {
+	public BestelbonController(BestelbonService bestelbonService, ProductService productService, GebruikerService gebruikerService, Mandje mandje) {
 		this.bestelbonService = bestelbonService;
 		this.productService = productService;
 		this.gebruikerService = gebruikerService;
