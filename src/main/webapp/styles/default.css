@@ -12,7 +12,8 @@ ul {font-size: 1.4em; letter-spacing: 0.01em;}
 table {font-size: 1.4em; letter-spacing: 0.01em;}
 table thead {text-align: center;}
 table td {padding: 5px 5px;}
-input[type=text], input[type=password] {height: 16px;}
+input[type=text], input[type=password] {height: 16px; margin-right: 5px;}
+label {margin-right: 5px;}
 select {height: 22px;}
 form p {font-size: 1.5em; margin-bottom: 0.1em;}
 form input[type=submit] {
@@ -231,7 +232,6 @@ span.prijs {
 }
 .product_rij form input[type=text] {
 	width: 30px;
-	margin-right: 5px;
 }
 
 #product_overzicht {
@@ -324,6 +324,7 @@ span.prijs {
 }
 #winkelmandje tbody tr td input[type=text] {
 	width: 50px;
+	margin-right: 0;
 }
 #winkelmandje tbody  img {
 	width: 40px;
