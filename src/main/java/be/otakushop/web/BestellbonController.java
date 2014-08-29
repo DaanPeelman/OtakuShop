@@ -22,11 +22,11 @@ import be.otakushop.valueobjects.Bestelbonlijn;
 
 @Controller
 @RequestMapping("bestellingen")
-class BestellingController {
+class BestellbonController {
 	private Mandje mandje;
 	
 	@Autowired
-	public BestellingController(Mandje mandje) {
+	public BestellbonController(Mandje mandje) {
 		this.mandje = mandje;
 	}
 	
