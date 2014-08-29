@@ -38,15 +38,15 @@
 					</thead>
 					<tbody>
 					<c:set var="totaal" value="0" />
-					<c:forEach items="${productenInMandje.bestelbonlijnen}" var="lijn"> 
+					<c:forEach items="${productenInMandje.bestelbonlijnen}" var="lijn" varStatus="i"> 
 					<spring:url var="producturl" value="/producten/{id}">
 						<spring:param name="id" value="${lijn.product.id}" />
 					</spring:url>
 						<tr>
 							<td class="product_mandje"><img src="${pageContext.servletContext.contextPath}/images/producten/${lijn.product.id}.jpg" alt="${lijn.product.titel}"/><h3><a href="${producturl}" title="meer details over ${lijn.product.titel}">${lijn.product.titel}</a></h3>&euro;<fmt:formatNumber value="${lijn.product.prijs}" minFractionDigits="2" maxFractionDigits="2" /></td>
 							<td>
-							<form:input path="lijnen[0].id" type="hidden" value="${lijn.product.id}" />
-							<form:input path="lijnen[0].aantal" type="text" title="voer het aantal in dat u wil bestellen" value="${lijn.aantal}"/></td>
+							<form:input path="lijnen[${i.index}].id" type="hidden" value="${lijn.product.id}" />
+							<form:input path="lijnen[${i.index}].aantal" type="text" title="voer het aantal in dat u wil bestellen" value="${lijn.aantal}"/></td>
 							<td class="prijs">&euro;<fmt:formatNumber value="${lijn.product.prijs * lijn.aantal}" minFractionDigits="2" maxFractionDigits="2" /></td>
 							<td><form action="#" method="post"><div><input type="submit" value="X" title="verwijder dit product uit uw mandje" class="delete_btn" /></div></form></td>
 						</tr>
@@ -62,18 +62,32 @@
 				</table>
 				
 					<h2>Afleveradres</h2>
+					<div>
 					<p><form:label path="adres.straat" for="straat">Straat:</form:label></p>
 					<p><form:input path="adres.straat" type="text" id="straat" title="voer uw straat in" /></p>
+					<p><form:errors path="adres.straat" cssClass="fout"/></p>
+					</div>
+					<div>
 					<p><form:label path="adres.nummer" for="huisnummer">Huisnummer:</form:label></p>
 					<p><form:input path="adres.nummer" type="text" id="huisnummer" title="voer uw huisnummer" /></p>
+					<p><form:errors path="adres.nummer" cssClass="fout"/></p>
+					</div>
+					<div>
 					<p><form:label path="adres.postcode" for="postcode">Postcode:</form:label></p>
 					<p><form:input path="adres.postcode" type="text" id="postcode" title="voer uw postcode in" /></p>
+					<p><form:errors path="adres.postcode" cssClass="fout"/></p>
+					</div>
+					<div>
 					<p><form:label path="adres.gemeente" for="gemeente">Gemeente:</form:label></p>
 					<p><form:input path="adres.gemeente" type="text" id="gemeente" title="voer uw gemeente in" /></p>
+					<p><form:errors path="adres.gemeente" cssClass="fout"/></p>
+					</div>
+					<div>
 					<p><input type="submit" value="Bestelling afronden" title="rond uw bestelling af" /></p>
+					</div>
 				</form:form>
 				</c:if>
-				<c:if test="${empty mandje}">
+				<c:if test="${empty productenInMandje}">
 					<p>Er zijn geen producten in uw mandje.</p>
 				</c:if>
 			</div> <!-- END .content_wrap -->

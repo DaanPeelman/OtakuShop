@@ -8,6 +8,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.validation.DataBinder;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
@@ -66,15 +67,27 @@ class MandjeController {
 	}
 	
 	@RequestMapping(method = RequestMethod.PUT)
-	public ModelAndView wijzigMandje(@Valid MandjeForm mandjeForm) {
-		for(MandjeFormLijn lijn: mandjeForm.getLijnen()) {
-			mandje.addProduct(lijn.getId(), lijn.getAantal());
+	public ModelAndView wijzigMandje(@Valid MandjeForm mandjeForm, BindingResult bindingResult) {
+		if(!bindingResult.hasErrors()) {
+			for(MandjeFormLijn lijn: mandjeForm.getLijnen()) {
+				mandje.addProduct(lijn.getId(), lijn.getAantal());
+			}
+			mandje.setAdres(mandjeForm.getAdres());
+			
+			ModelAndView modelAndView = new ModelAndView("redirect:/mandje/overzicht");
+			
+			return modelAndView;
 		}
-		mandje.setAdres(mandjeForm.getAdres());
 		
-		ModelAndView modelAndView = new ModelAndView("redirect:/mandje/overzicht");
+		Bestelbon productenInMandje = new Bestelbon();
+		for(long id:mandje.getProducten().keySet()) {
+			Product product = productService.read(id);
+			productenInMandje.addBestelbonlijn(new Bestelbonlijn(product, mandje.getProducten().get(id), product.getPrijs()));
+		}
 		
+		ModelAndView modelAndView = new ModelAndView("mandje/mandje");
 		
+		modelAndView.addObject("productenInMandje", productenInMandje);
 		
 		return modelAndView;
 	}
