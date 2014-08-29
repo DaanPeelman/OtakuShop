@@ -1,5 +1,6 @@
 package be.otakushop.web;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.DataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
@@ -12,10 +13,18 @@ import be.otakushop.entities.Gebruiker;
 @Controller
 @RequestMapping("login")
 public class LoginController {
+	private Mandje mandje;
+	
+	@Autowired
+	public LoginController(Mandje mandje) {
+		this.mandje = mandje;
+	}
+	
 	@RequestMapping(method = RequestMethod.GET)
 	ModelAndView aanmeldForm() {
 		ModelAndView modelAndView = new ModelAndView("login");
 		
+		modelAndView.addObject("aantalInMandje", mandje.getProducten().size());
 		modelAndView.addObject("gebruiker", new Gebruiker());
 		
 		return modelAndView;

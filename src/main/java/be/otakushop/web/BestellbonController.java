@@ -38,8 +38,11 @@ class BestellbonController {
 	
 	@RequestMapping(method = RequestMethod.GET)
 	ModelAndView viewBestellingen() {
+		ModelAndView modelAndView = new ModelAndView("index");
 		
-		return new ModelAndView("index");
+		modelAndView.addObject("aantalInMandje", mandje.getProducten().size());
+		
+		return modelAndView;
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
@@ -90,6 +93,7 @@ class BestellbonController {
 		
 		ModelAndView modelAndView = new ModelAndView("bestellingen/bestellingsucces");
 		
+		modelAndView.addObject("aantalInMandje", mandje.getProducten().size());
 		modelAndView.addObject("bestelbon", bestelbon);
 		
 		return modelAndView;

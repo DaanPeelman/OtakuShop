@@ -20,15 +20,19 @@ import be.otakushop.services.GebruikerService;
 @RequestMapping("gebruiker")
 public class GebruikerController {
 	private final GebruikerService gebruikerService;
+	private Mandje mandje;
 	
 	@Autowired
-	public GebruikerController(GebruikerService gebruikerService) {
+	public GebruikerController(GebruikerService gebruikerService, Mandje mandje) {
 		this.gebruikerService = gebruikerService;
+		this.mandje = mandje;
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
 	ModelAndView create(@Valid Gebruiker gebruiker, BindingResult bindingResult) {
 		ModelAndView modelAndView = new ModelAndView("login");
+		
+		modelAndView.addObject("aantalInMandje", mandje.getProducten().size());
 		
 		if(!bindingResult.hasErrors() && gebruiker.isValid()) {
 			try {

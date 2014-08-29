@@ -38,6 +38,8 @@ class MandjeController {
 	public ModelAndView viewMandje() {
 		ModelAndView modelAndView = new ModelAndView("mandje/mandje");
 		
+		modelAndView.addObject("aantalInMandje", mandje.getProducten().size());
+		
 		if(mandje.getProducten().size() > 0) {
 			Bestelbon productenInMandje = new Bestelbon();
 			for(long id:mandje.getProducten().keySet()) {
@@ -63,6 +65,8 @@ class MandjeController {
 	public ModelAndView addProduct(@Valid ProductAankoopForm productAankoopForm, BindingResult bindingResult) {
 		ModelAndView modelAndView = new ModelAndView("producten/product");
 		
+		modelAndView.addObject("aantalInMandje", mandje.getProducten().size());
+		
 		if(!bindingResult.hasErrors()) {
 			if(productAankoopForm.getAantal() > productService.read(productAankoopForm.getProductId()).getStock()) {
 				bindingResult.rejectValue("aantal", "teWeinigStock");
@@ -84,6 +88,8 @@ class MandjeController {
 	@RequestMapping(method = RequestMethod.PUT)
 	public ModelAndView wijzigMandje(@Valid MandjeForm mandjeForm, BindingResult bindingResult) {
 		ModelAndView modelAndView = new ModelAndView("mandje/mandje");
+		
+		modelAndView.addObject("aantalInMandje", mandje.getProducten().size());
 		
 		if(!bindingResult.hasErrors()) {
 			boolean inStockFout = false;
@@ -123,6 +129,8 @@ class MandjeController {
 	@RequestMapping(value = "overzicht", method = RequestMethod.GET)
 	public ModelAndView viewMandjeOverzicht() {
 		ModelAndView modelAndView = new ModelAndView("mandje/overzicht");
+		
+		modelAndView.addObject("aantalInMandje", mandje.getProducten().size());
 		
 		Bestelbon bestelbon = new Bestelbon();
 		
