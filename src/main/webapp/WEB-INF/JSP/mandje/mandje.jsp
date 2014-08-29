@@ -46,7 +46,7 @@
 							<td class="product_mandje"><img src="${pageContext.servletContext.contextPath}/images/producten/${lijn.product.id}.jpg" alt="${lijn.product.titel}"/><h3><a href="${producturl}" title="meer details over ${lijn.product.titel}">${lijn.product.titel}</a></h3>&euro;<fmt:formatNumber value="${lijn.product.prijs}" minFractionDigits="2" maxFractionDigits="2" /></td>
 							<td>
 							<form:input path="lijnen[${i.index}].id" type="hidden" value="${lijn.product.id}" />
-							<form:input path="lijnen[${i.index}].aantal" type="text" title="voer het aantal in dat u wil bestellen" value="${lijn.aantal}"/></td>
+							<form:input path="lijnen[${i.index}].aantal" type="text" title="voer het aantal in dat u wil bestellen" value="${lijn.aantal}"/><form:errors path="lijnen[${i.index}].aantal" cssClass="fout" /></td>
 							<td class="prijs">&euro;<fmt:formatNumber value="${lijn.product.prijs * lijn.aantal}" minFractionDigits="2" maxFractionDigits="2" /></td>
 							<td><form action="#" method="post"><div><input type="submit" value="X" title="verwijder dit product uit uw mandje" class="delete_btn" /></div></form></td>
 						</tr>

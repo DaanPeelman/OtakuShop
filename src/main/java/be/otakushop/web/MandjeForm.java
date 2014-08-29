@@ -7,6 +7,7 @@ import javax.validation.Valid;
 import be.otakushop.valueobjects.Adres;
 
 public class MandjeForm {
+	@Valid
 	List<MandjeFormLijn> lijnen;
 	@Valid
 	private Adres adres;

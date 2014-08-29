@@ -1,7 +1,12 @@
 package be.otakushop.web;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+
 public class MandjeFormLijn {
 	private long id;
+	@Min(1)
+	@Max(3)
 	private int aantal;
 	
 	public MandjeFormLijn() {

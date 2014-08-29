@@ -107,6 +107,8 @@ class MandjeController {
 			modelAndView.addObject("nietGenoegInStock", inStockFout);
 		}
 		
+		System.out.println(bindingResult.getAllErrors());
+		
 		Bestelbon productenInMandje = new Bestelbon();
 		for(long id:mandje.getProducten().keySet()) {
 			Product product = productService.read(id);
