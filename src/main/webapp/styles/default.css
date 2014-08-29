@@ -21,9 +21,9 @@ form input[type=submit] {
 	letter-spacing: 0.01em;
 	color: #fff;
 	background-color: #e8430c;
-    cursor:pointer;
-	height: 22px;
-    border: none;
+    cursor: pointer;
+	height: 21px;
+    border: 1px solid #e8430c;
 }
 form div {
 	margin-bottom: 1.5em;
@@ -93,10 +93,6 @@ form div {
 	color: #ffdebc;
 }
 
-.small {
-	font-size: 0.7em;
-}
-
 #header {
 	text-align: center;
 	
@@ -153,6 +149,13 @@ form div {
 }
 .aside #zoekform .slidertekst input[type=text] {
 	margin-bottom: 0.3em;
+}
+
+input[type=submit].disabled {
+	color: #e8430c;
+	background-color: #f6f6f6;
+	cursor: default;
+	border: 1px solid #e8430c;
 }
 
 #zoek_resultaten {

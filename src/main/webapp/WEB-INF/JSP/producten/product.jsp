@@ -46,7 +46,7 @@
 							<form:form class="bestelform" commandName="productAankoopForm" action="${url}" method="post">
 								<p><form:input path="productId" type="hidden" value="${product.id}" /><form:label path="aantal" for="aantal">Aantal:</form:label>
 								<form:input path="aantal" id="aantal" type="text" title="voer het aantal in dat u wil bestellen" />
-								<input type="submit" value="Voeg toe aan mandje" <c:if test="${product.stock > 0}">title="voeg dit product toe aan uw mandje"</c:if><c:if test="${product.stock == 0}">title="dit product is niet meer in voorraad" disabled="disabled"</c:if> /></p>
+								<input type="submit" value="Voeg toe aan mandje" <c:if test="${product.stock > 0}">title="voeg dit product toe aan uw mandje"</c:if><c:if test="${product.stock == 0}">class="disabled" title="dit product is niet meer in voorraad" disabled="disabled"</c:if> /></p>
 								<p><form:errors path="aantal" cssClass="fout" /></p>
 							</form:form>
 						</div> <!-- END #info -->
