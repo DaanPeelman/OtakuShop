@@ -60,23 +60,51 @@ class MandjeController {
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public ModelAndView addProduct(@Valid ProductAankoopForm productAankoopForm) {		
-		mandje.addProduct(productAankoopForm.getProductId(), productAankoopForm.getAantal());
+	public ModelAndView addProduct(@Valid ProductAankoopForm productAankoopForm, BindingResult bindingResult) {
+		ModelAndView modelAndView = new ModelAndView("producten/product");
 		
-		return new ModelAndView("redirect:/mandje");
+		if(!bindingResult.hasErrors()) {
+			if(productAankoopForm.getAantal() > productService.read(productAankoopForm.getProductId()).getStock()) {
+				bindingResult.rejectValue("aantal", "teWeinigStock");
+				
+				modelAndView.addObject("product", productService.read(productAankoopForm.getProductId()));
+				
+				return modelAndView;
+			}
+			mandje.addProduct(productAankoopForm.getProductId(), productAankoopForm.getAantal());
+			
+			return new ModelAndView("redirect:/mandje");
+		}
+		
+		modelAndView.addObject("product", productService.read(productAankoopForm.getProductId()));
+		
+		return modelAndView;
 	}
 	
 	@RequestMapping(method = RequestMethod.PUT)
 	public ModelAndView wijzigMandje(@Valid MandjeForm mandjeForm, BindingResult bindingResult) {
+		ModelAndView modelAndView = new ModelAndView("mandje/mandje");
+		
 		if(!bindingResult.hasErrors()) {
+			boolean inStockFout = false;
+			
 			for(MandjeFormLijn lijn: mandjeForm.getLijnen()) {
+				Product product = productService.read(lijn.getId());
+				
+				if(lijn.getAantal() > product.getStock()) {
+					inStockFout = true;
+				}
+				
 				mandje.addProduct(lijn.getId(), lijn.getAantal());
 			}
-			mandje.setAdres(mandjeForm.getAdres());
 			
-			ModelAndView modelAndView = new ModelAndView("redirect:/mandje/overzicht");
+			if(!inStockFout) {
+				mandje.setAdres(mandjeForm.getAdres());
+				
+				return new ModelAndView("redirect:/mandje/overzicht");
+			}
 			
-			return modelAndView;
+			modelAndView.addObject("nietGenoegInStock", inStockFout);
 		}
 		
 		Bestelbon productenInMandje = new Bestelbon();
@@ -84,8 +112,6 @@ class MandjeController {
 			Product product = productService.read(id);
 			productenInMandje.addBestelbonlijn(new Bestelbonlijn(product, mandje.getProducten().get(id), product.getPrijs()));
 		}
-		
-		ModelAndView modelAndView = new ModelAndView("mandje/mandje");
 		
 		modelAndView.addObject("productenInMandje", productenInMandje);
 		

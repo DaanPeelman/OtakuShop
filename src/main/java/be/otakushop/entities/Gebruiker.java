@@ -150,7 +150,7 @@ public class Gebruiker implements Serializable {
 	public void addBestelling(Bestelbon bestelling) {
 		bestellingen.add(bestelling);
 		
-		if(!bestelling.getBestelbonlijnen().contains(this)) {
+		if(bestelling.getGebruiker() != this) {
 			bestelling.setGebruiker(this);
 		}
 	}

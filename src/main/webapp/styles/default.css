@@ -368,6 +368,9 @@ span.prijs {
 	font-size: 0.8em;
 	color: #f00;
 }
+.outsideForm {
+	margin-bottom: 1.5em;
+}
 
 #footer {
 	background-color: #000;

@@ -60,7 +60,11 @@
 						</tr>
 					</tbody>
 				</table>
-				
+				<c:if test="${nietGenoegInStock}">
+					<div class="outsideForm">
+						<p><span class="fout">Een of meerdere producten in uw mandje hebben niet genoeg stock.</span></p>
+					</div>
+				</c:if>
 					<h2>Afleveradres</h2>
 					<div>
 					<p><form:label path="adres.straat" for="straat">Straat:</form:label></p>

@@ -64,6 +64,10 @@ public class Product implements Serializable {
 		setPrijs(prijs);
 		setStock(stock);
 	}
+	
+	public void verlaagStock(int aantal) {
+		stock -= aantal;
+	}
 
 	public long getId() {
 		return id;

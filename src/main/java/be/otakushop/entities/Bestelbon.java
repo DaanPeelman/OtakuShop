@@ -75,13 +75,13 @@ public class Bestelbon implements Serializable {
 	}
 
 	public void setGebruiker(Gebruiker gebruiker) {
-		if(this.gebruiker.getBestellingen().contains(this)) {
+		if(this.gebruiker != null && this.gebruiker.getBestellingen().contains(this)) {
 			this.gebruiker.removeBestelling(this);
 		}
 		
 		this.gebruiker = gebruiker;
 		
-		if(gebruiker != null) {
+		if(gebruiker != null && !gebruiker.getBestellingen().contains(this)) {
 			gebruiker.addBestelling(this);
 		}
 	}

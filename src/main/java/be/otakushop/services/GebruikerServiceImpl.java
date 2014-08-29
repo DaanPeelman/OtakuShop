@@ -3,6 +3,7 @@ package be.otakushop.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import be.otakushop.dao.GebruikerDAO;
 import be.otakushop.dao.RolDAO;
@@ -11,6 +12,7 @@ import be.otakushop.entities.Rol;
 import be.otakushop.exceptions.GebruikerMetDitEmailadresBestaatAlException;
 
 @Service
+@Transactional(readOnly = true)
 public class GebruikerServiceImpl implements GebruikerService {
 	private final GebruikerDAO gebruikerDAO;
 	private final RolDAO rolDAO;
@@ -21,12 +23,12 @@ public class GebruikerServiceImpl implements GebruikerService {
 		this.rolDAO = rolDAO;
 	}
 	
+	@Transactional(readOnly = false)
 	@Override
 	public void create(Gebruiker gebruiker) {
 		Rol klantenrol = rolDAO.findByNaamIs("klant");
-		Gebruiker gebruikerInDatabase = gebruikerDAO.findByEmailadres(gebruiker.getEmailadres());
 		
-		if(gebruikerInDatabase != null) {
+		if(findByEmailadres(gebruiker.getEmailadres()) != null) {
 			throw new GebruikerMetDitEmailadresBestaatAlException();
 		}
 		
@@ -37,5 +39,10 @@ public class GebruikerServiceImpl implements GebruikerService {
 		gebruiker.setActief(true);
 		
 		gebruikerDAO.save(gebruiker);
+	}
+	
+	@Override
+	public Gebruiker findByEmailadres(String emailadres) {
+		return gebruikerDAO.findByEmailadres(emailadres);
 	}
 }

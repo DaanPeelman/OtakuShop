@@ -47,15 +47,6 @@ public class GebruikerController {
 		return modelAndView;
 	}
 	
-//	@RequestMapping(value = "login", method = RequestMethod.GET)
-//	ModelAndView aanmeldForm() {
-//		ModelAndView modelAndView = new ModelAndView("gebruiker/login");
-//		
-//		modelAndView.addObject("gebruiker", new Gebruiker());
-//		
-//		return modelAndView;
-//	}
-	
 	@InitBinder("gebruiker")
 	public void initBinderGebruiker(DataBinder dataBinder) {
 		Gebruiker gebruiker = (Gebruiker)dataBinder.getTarget();
