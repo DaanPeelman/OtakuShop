@@ -1,6 +1,9 @@
 package be.otakushop.dao;
 
 import java.math.BigDecimal;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.junit.Assert;
@@ -31,28 +34,19 @@ public class ProductDAOTest {
 	private SerieDAO serieDAO;
 	@Autowired
 	private UitgeverDAO uitgeverDAO;
-	private Serie serie;
-	private Uitgever uitgever;
 	
 	@Before
 	public void setUp() {
-		serie = new Serie("Test");
-		uitgever = new Uitgever("Test");
+		Serie serie = new Serie("Serie");
+		Uitgever uitgever = new Uitgever("Uitgever");
 		
 		serieDAO.save(serie);
 		uitgeverDAO.save(uitgever);
 		
-		productDAO.save(new Product("Product1", serie, 1, new Date(), "Test", "Test", uitgever, new BigDecimal(10), 4));
-		productDAO.save(new Product("Product2", serie, 1, new Date(), "Test", "Test", uitgever, new BigDecimal(10), 0));
-		productDAO.save(new Product("Product3", serie, 1, new Date(), "Test", "Test", uitgever, new BigDecimal(10), 7));
-	}
-	
-	@Test
-	public void create() {
-		Product product = new Product("Test", serie, 1, new Date(), "Test", "Test", uitgever, new BigDecimal(10), 2);
-		productDAO.save(product);
-		
-		Assert.assertNotEquals(0, product.getId());
+		productDAO.save(new Product("Product1", serie, 1, new Date(), "Test", "Test", uitgever, new BigDecimal(0), 4));		
+		productDAO.save(new Product("Product2", serie, 1, new Date(), "Test", "Test", uitgever, new BigDecimal(5), 0));
+		productDAO.save(new Product("Product3", serie, 1, new Date(), "Test", "Test", uitgever, new BigDecimal(8), 7));
+		productDAO.save(new Product("Product4", serie, 1, new Date(), "Test", "Test", uitgever, new BigDecimal(11), 0));
 	}
 	
 	@Test
@@ -69,5 +63,42 @@ public class ProductDAOTest {
 		}
 		
 		Assert.assertFalse(legeStock);
+	}
+	
+	@Test
+	public void findByTitelContainsAndPrijsBetweenAndUitgifteBetweenMetParametersGeeftJuisteProductenTerug() {
+		DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
+		Date startDatum = new Date();
+		try {
+			 startDatum = df.parse("2014/08/31");
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		
+		Iterable<Product> gevondenProducten = productDAO.findByTitelContainsAndPrijsBetweenAndUitgifteBetween("Product", new BigDecimal(1), new BigDecimal(10), startDatum, new Date());
+		boolean goedProduct = true;
+		
+		for(Product product:gevondenProducten) {
+			if(!product.getTitel().contains("Product") || (product.getPrijs().compareTo(new BigDecimal(1)) == -1) || (product.getPrijs().compareTo(new BigDecimal(10)) == 1)) {
+				goedProduct = false;
+			}
+		}
+		
+		Assert.assertTrue(goedProduct);
+	}
+	
+	@Test
+	public void findByTitelContainsAndPrijsBetweenAndUitgifteBetweenMetEenParameterDieNietOvereenkomtMetEenProductGeeftLegeCollectionTerug() {
+		DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
+		Date startDatum = new Date();
+		try {
+			 startDatum = df.parse("2014/08/31");
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		
+		Iterable<Product> gevondenProducten = productDAO.findByTitelContainsAndPrijsBetweenAndUitgifteBetween("Product", new BigDecimal(100), new BigDecimal(200), startDatum, new Date());
+		
+		Assert.assertFalse(gevondenProducten.iterator().hasNext());
 	}
 }
