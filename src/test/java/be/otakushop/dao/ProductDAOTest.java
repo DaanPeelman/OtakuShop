@@ -41,11 +41,9 @@ public class ProductDAOTest {
 	
 	@Test
 	public void create() {
-		System.out.println(serie);
 		Product product = new Product("Test", serie, 1, new Date(), "Test", "Test", uitgever, new BigDecimal(10), 2);
 		productDAO.save(product);
 		
-		System.out.println(product);
 		Assert.assertNotEquals(0, product.getId());
 	}
 }
