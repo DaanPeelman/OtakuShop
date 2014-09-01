@@ -26,9 +26,9 @@ public class Bestelbonlijn implements Serializable {
 	}
 
 	public Bestelbonlijn(Product product, int aantal, BigDecimal prijs) {
-		this.product = product;
-		this.aantal = aantal;
-		this.prijs = prijs;
+		setProduct(product);
+		setAantal(aantal);
+		setPrijs(prijs);
 	}
 
 	public Product getProduct() {
