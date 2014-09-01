@@ -31,12 +31,6 @@ public class Serie implements Serializable {
 		setTitel(titel);
 		this.producten = new HashSet<>();
 	}
-	
-	public Serie(long id, String titel) {
-		setId(id);
-		setTitel(titel);
-		this.producten = new HashSet<>();
-	}
 
 	public long getId() {
 		return id;

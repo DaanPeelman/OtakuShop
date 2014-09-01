@@ -51,19 +51,6 @@ public class Product implements Serializable {
 		setPrijs(prijs);
 		setStock(stock);
 	}
-
-	public Product(long id, String titel, Serie serie, int hoogte, Date uitgifte, String omschrijvingNl, String omschrijvingEn, Uitgever uitgever, BigDecimal prijs, int stock) {
-		setId(id);
-		setTitel(titel);
-		setSerie(serie);
-		setHoogte(hoogte);
-		setUitgifte(uitgifte);
-		setOmschrijvingNl(omschrijvingNl);
-		setOmschrijvingEn(omschrijvingEn);
-		setUitgever(uitgever);
-		setPrijs(prijs);
-		setStock(stock);
-	}
 	
 	public void verlaagStock(int aantal) {
 		stock -= aantal;

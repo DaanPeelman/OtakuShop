@@ -33,12 +33,6 @@ public class Rol implements Serializable {
 		setNaam(naam);
 		this.gebruikers = new HashSet<>();
 	}
-	
-	public Rol(long id, String naam) {
-		setId(id);
-		setNaam(naam);
-		this.gebruikers = new HashSet<>();
-	}
 
 	public long getId() {
 		return id;

@@ -50,14 +50,6 @@ public class Bestelbon implements Serializable {
 		this.bestelbonlijnen = new HashSet<>();
 	}
 
-	public Bestelbon(long id, Gebruiker gebruiker, Adres leverAdres) {
-		setId(id);
-		setGebruiker(gebruiker);
-		setLeverAdres(leverAdres);
-		setDatum(new Date());
-		this.bestelbonlijnen = new HashSet<>();
-	}
-
 	public long getId() {
 		return id;
 	}

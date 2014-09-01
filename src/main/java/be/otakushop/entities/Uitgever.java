@@ -32,12 +32,6 @@ public class Uitgever implements Serializable {
 		this.producten = new HashSet<>();
 	}
 
-	public Uitgever(long id, String naam) {
-		setId(id);
-		setNaam(naam);
-		this.producten = new HashSet<>();
-	}
-
 	public long getId() {
 		return id;
 	}

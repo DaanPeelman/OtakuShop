@@ -67,17 +67,6 @@ public class Gebruiker implements Serializable {
 		this.rollen = new HashSet<>();
 		setActief(true);
 	}
-
-	public Gebruiker(long id, String voornaam, String familienaam, Adres adres, String emailadres, String wachtwoord) {
-		setId(id);
-		setVoornaam(voornaam);
-		setFamilienaam(familienaam);
-		setAdres(adres);
-		setEmailadres(emailadres);
-		setWachtwoord(wachtwoord);
-		this.rollen = new HashSet<>();
-		setActief(true);
-	}
 	
 	public boolean isValid() {
 		return wachtwoord.equals(wachtwoordBevestig);
