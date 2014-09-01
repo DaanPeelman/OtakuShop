@@ -3,6 +3,7 @@ package be.otakushop.services;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
@@ -50,5 +51,16 @@ public class BestelbonServiceImplTest {
 		bestelbon.addBestelbonlijn(new Bestelbonlijn(product, 1, BigDecimal.ONE));
 		
 		bestelbonService.create(bestelbon);
+	}
+	
+	@Test
+	public void productInBestelbonDieGeplaatstIsVermindertStock() {
+		Product product = new  Product("Product", new Serie("Serie"), 1, new Date(), "Test", "Test", new Uitgever("Uitgever"), BigDecimal.ONE, 5);
+		Bestelbon bestelbon = new Bestelbon(null, null);
+		bestelbon.addBestelbonlijn(new Bestelbonlijn(product, 1, BigDecimal.ONE));
+		
+		bestelbonService.create(bestelbon);
+		
+		Assert.assertEquals(4, product.getStock());
 	}
 }
