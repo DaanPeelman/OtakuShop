@@ -14,6 +14,7 @@ import be.otakushop.entities.Product;
 import be.otakushop.entities.Serie;
 import be.otakushop.entities.Uitgever;
 import be.otakushop.services.ProductService;
+import be.otakushop.services.UitgeverService;
 import be.otakushop.web.ProductController;
 
 public class ProductControllerTest {
@@ -31,7 +32,10 @@ public class ProductControllerTest {
 		Mockito.when(productService.findAll()).thenReturn(producten);
 		Mockito.when(productService.read(1L)).thenReturn(product);
 		
-		productController = new ProductController(productService);
+		UitgeverService uitgeverService = Mockito.mock(UitgeverService.class);
+		Mandje mandje = Mockito.mock(Mandje.class);
+		
+		productController = new ProductController(productService, uitgeverService, mandje);
 	}
 	
 	@Test
@@ -46,11 +50,11 @@ public class ProductControllerTest {
 	
 	@Test
 	public void readActiveertJuisteView() {
-		Assert.assertEquals("producten/product", productController.read(product).getViewName());
+		Assert.assertEquals("producten/product", productController.view(product).getViewName());
 	}
 	
 	@Test
 	public void readMetBestaandeIDGeeftProductTerug() {
-		Assert.assertSame(product, productController.read(product).getModelMap().get("product"));
+		Assert.assertSame(product, productController.view(product).getModelMap().get("product"));
 	}
 }

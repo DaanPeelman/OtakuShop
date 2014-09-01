@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,13 +23,29 @@ import be.otakushop.entities.Uitgever;
 public class ProductDAOTest {
 	@Autowired
 	private ProductDAO productDAO;
+	@Autowired
+	private SerieDAO serieDAO;
+	@Autowired
+	private UitgeverDAO uitgeverDAO;
+	private Serie serie;
+	private Uitgever uitgever;
+	
+	@Before
+	public void setUp() {
+		serie = new Serie("Test");
+		uitgever = new Uitgever("Test");
+		
+		serieDAO.save(serie);
+		uitgeverDAO.save(uitgever);
+	}
 	
 	@Test
 	public void create() {
-		Serie serie = new Serie(1L, "Test");
-		Uitgever uitgever = new Uitgever(1L, "Test");
+		System.out.println(serie);
 		Product product = new Product("Test", serie, 1, new Date(), "Test", "Test", uitgever, new BigDecimal(10), 2);
 		productDAO.save(product);
+		
+		System.out.println(product);
 		Assert.assertNotEquals(0, product.getId());
 	}
 }

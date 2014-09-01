@@ -14,7 +14,8 @@ public class IndexControllerTest {
 	@Before
 	public void setUp() {
 		ProductService productService = Mockito.mock(ProductService.class);
-		indexController = new IndexController(productService);
+		Mandje mandje = Mockito.mock(Mandje.class);
+		indexController = new IndexController(productService, mandje);
 	}
 	
 	@Test
