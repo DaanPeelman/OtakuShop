@@ -13,7 +13,7 @@ import be.otakushop.exceptions.GebruikerMetDitEmailadresBestaatAlException;
 
 @Service
 @Transactional(readOnly = true)
-public class GebruikerServiceImpl implements GebruikerService {
+class GebruikerServiceImpl implements GebruikerService {
 	private final GebruikerDAO gebruikerDAO;
 	private final RolDAO rolDAO;
 	

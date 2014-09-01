@@ -12,7 +12,7 @@ import be.otakushop.valueobjects.Bestelbonlijn;
 
 @Service
 @Transactional(readOnly = true)
-public class BestelbonServiceImpl implements BestelbonService {
+class BestelbonServiceImpl implements BestelbonService {
 	private final BestelbonDAO bestelbonDAO;
 	
 	@Autowired
