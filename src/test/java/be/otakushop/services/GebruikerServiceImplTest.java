@@ -20,9 +20,9 @@ public class GebruikerServiceImplTest {
 		GebruikerDAO gebruikerDAO = Mockito.mock(GebruikerDAO.class);
 		RolDAO rolDAO = Mockito.mock(RolDAO.class);
 		
-		Gebruiker gebruiker = new Gebruiker(1L, "Daan", "Peelman", new Adres("Omgangstraat", "137", 2880, "Mariekerke"), "daanpeelman@gmail.com", "Test123");
+		Gebruiker gebruiker = new Gebruiker("Daan", "Peelman", new Adres("Omgangstraat", "137", 2880, "Mariekerke"), "daanpeelman@gmail.com", "Test123");
 		Mockito.when(gebruikerDAO.findByEmailadres("daanpeelman@gmail.com")).thenReturn(gebruiker);
-		Rol rol = new Rol(2L, "klant");
+		Rol rol = new Rol("klant");
 		Mockito.when(rolDAO.findByNaamIs("klant")).thenReturn(rol);
 		
 		gebruikerService = new GebruikerServiceImpl(gebruikerDAO, rolDAO);

@@ -27,7 +27,7 @@ public class BestelbonServiceImplTest {
 	
 	@Test(expected = NietGenoegInStockException.class)
 	public void bestelbonMetProductDieGeenStockHeeftWerptException() {
-		Product product = new Product(1L, "Product", new Serie("Serie"), 1, new Date(), "Test", "Test", new Uitgever("Uitgever"), BigDecimal.ONE, 0);
+		Product product = new Product("Product", new Serie("Serie"), 1, new Date(), "Test", "Test", new Uitgever("Uitgever"), BigDecimal.ONE, 0);
 		Bestelbon bestelbon = new Bestelbon(null, null);
 		bestelbon.addBestelbonlijn(new Bestelbonlijn(product, 1, BigDecimal.ONE));
 		
@@ -36,7 +36,7 @@ public class BestelbonServiceImplTest {
 	
 	@Test(expected = NietGenoegInStockException.class)
 	public void bestelbonMetHogerAantalDanDeStockVanProductWerptException() {
-		Product product = new Product(1L, "Product", new Serie("Serie"), 1, new Date(), "Test", "Test", new Uitgever("Uitgever"), BigDecimal.ONE, 2);
+		Product product = new Product("Product", new Serie("Serie"), 1, new Date(), "Test", "Test", new Uitgever("Uitgever"), BigDecimal.ONE, 2);
 		Bestelbon bestelbon = new Bestelbon(null, null);
 		bestelbon.addBestelbonlijn(new Bestelbonlijn(product, 3, BigDecimal.ONE));
 		
@@ -45,7 +45,7 @@ public class BestelbonServiceImplTest {
 	
 	@Test
 	public void bestelbonMetProductDieGenoegStockHeeftWerptGeenException() {
-		Product product = new Product(1L, "Product", new Serie("Serie"), 1, new Date(), "Test", "Test", new Uitgever("Uitgever"), BigDecimal.ONE, 5);
+		Product product = new Product("Product", new Serie("Serie"), 1, new Date(), "Test", "Test", new Uitgever("Uitgever"), BigDecimal.ONE, 5);
 		Bestelbon bestelbon = new Bestelbon(null, null);
 		bestelbon.addBestelbonlijn(new Bestelbonlijn(product, 1, BigDecimal.ONE));
 		

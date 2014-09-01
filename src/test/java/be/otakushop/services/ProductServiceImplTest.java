@@ -44,7 +44,7 @@ public class ProductServiceImplTest {
 		}
 		
 		List<Product> producten = new ArrayList<>();
-		producten.add(new Product(1L, "Product4", new Serie("Serie"), 1, datum, "Test", "Test", new Uitgever("Uitgever"), new BigDecimal(28.99), 1));
+		producten.add(new Product("Product4", new Serie("Serie"), 1, datum, "Test", "Test", new Uitgever("Uitgever"), new BigDecimal(28.99), 1));
 		
 		Pageable pageablePrijs = new PageRequest(0, 1, Direction.DESC, "prijs");
 		Mockito.when(productDAO.findAll(pageablePrijs)).thenReturn(new PageImpl<>(producten));
