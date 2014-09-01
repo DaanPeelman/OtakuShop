@@ -69,7 +69,7 @@ class ProductController {
 	}
 	
 	@RequestMapping(value = "{product}", method = RequestMethod.GET)
-	ModelAndView view(@PathVariable Product product) {
+	ModelAndView read(@PathVariable Product product) {
 		ModelAndView modelAndView = new ModelAndView("producten/product");
 		
 		modelAndView.addObject("aantalInMandje", mandje.getProducten().size());

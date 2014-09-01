@@ -37,7 +37,7 @@ class BestelbonController {
 	}
 	
 	@RequestMapping(method = RequestMethod.GET)
-	ModelAndView viewBestellingen() {
+	ModelAndView findAll() {
 		ModelAndView modelAndView = new ModelAndView("index");
 		
 		modelAndView.addObject("aantalInMandje", mandje.getProducten().size());
