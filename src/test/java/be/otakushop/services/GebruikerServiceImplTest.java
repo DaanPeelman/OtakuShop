@@ -51,4 +51,20 @@ public class GebruikerServiceImplTest {
 		
 		Assert.assertNotEquals(oudWachtwood, nieuweGebruiker.getWachtwoord());
 	}
+	
+	@Test
+	public void nieuweGebruikerIsEenKlant() {
+		Gebruiker nieuweGebruiker = new Gebruiker("Test", "Test", new Adres("Test", "1", 9600, "Test"), "test@gmail.com", "Test123");
+		
+		gebruikerService.create(nieuweGebruiker);
+		boolean isKlant = false;
+		
+		for(Rol rol:nieuweGebruiker.getRollen()) {
+			if(rol.getNaam().equals("klant")) {
+				isKlant = true;
+			}
+		}
+		
+		Assert.assertTrue(isKlant);
+	}
 }
