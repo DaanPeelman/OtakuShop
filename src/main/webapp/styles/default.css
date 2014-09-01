@@ -87,6 +87,7 @@ form div {
 	width: 125px;
 	height: 30px;
 	
+	border: none;
 	background-color: #ef7900;
 }
 #menu #logoutbutton:hover {
