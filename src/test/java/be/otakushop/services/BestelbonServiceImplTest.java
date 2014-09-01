@@ -44,4 +44,13 @@ public class BestelbonServiceImplTest {
 		
 		bestelbonService.create(bestelbon);
 	}
+	
+	@Test(expected = NietGenoegInStockException.class)
+	public void bestelbonMetProductDieGenoegStockHeeftWerptException() {
+		Product product = new Product(1L, "Product", new Serie("Serie"), 1, new Date(), "Test", "Test", new Uitgever("Uitgever"), BigDecimal.ONE, 5);
+		Bestelbon bestelbon = new Bestelbon(null, null);
+		bestelbon.addBestelbonlijn(new Bestelbonlijn(product, 1, BigDecimal.ONE));
+		
+		bestelbonService.create(bestelbon);
+	}
 }
