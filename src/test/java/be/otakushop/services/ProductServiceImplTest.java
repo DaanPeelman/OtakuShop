@@ -60,7 +60,7 @@ public class ProductServiceImplTest {
 	
 	@Test
 	public void findMaxPrijsGeeftHoogstePrijsAfgerond() {
-		Assert.assertSame(30L, productService.findMaxPrijs());
+		Assert.assertEquals(30, productService.findMaxPrijs());
 	}
 	
 	@Test
