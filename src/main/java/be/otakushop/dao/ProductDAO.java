@@ -12,5 +12,5 @@ import be.otakushop.entities.Product;
 
 public interface ProductDAO extends JpaRepository<Product, Long> {
 	Page<Product> findByStockGreaterThan(Pageable pageable, int stock);	
-	Iterable<Product> findByTitelContainsAndPrijsBetweenAndUitgifteBetween(String titel, BigDecimal startPrijs, BigDecimal eindPrijs, Date startDatum, Date eindDatum);
+	Iterable<Product> findByTitelContainsAndPrijsBetweenAndUitgifteBetweenOrderByTitelAsc(String titel, BigDecimal startPrijs, BigDecimal eindPrijs, Date startDatum, Date eindDatum);
 }

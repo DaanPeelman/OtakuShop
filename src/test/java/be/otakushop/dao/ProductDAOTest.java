@@ -74,7 +74,7 @@ public class ProductDAOTest {
 			e.printStackTrace();
 		}
 		
-		Iterable<Product> gevondenProducten = productDAO.findByTitelContainsAndPrijsBetweenAndUitgifteBetween("Product", new BigDecimal(1), new BigDecimal(10), startDatum, new Date());
+		Iterable<Product> gevondenProducten = productDAO.findByTitelContainsAndPrijsBetweenAndUitgifteBetweenOrderByTitelAsc("Product", new BigDecimal(1), new BigDecimal(10), startDatum, new Date());
 		boolean goedProduct = true;
 		
 		for(Product product:gevondenProducten) {
@@ -96,7 +96,7 @@ public class ProductDAOTest {
 			e.printStackTrace();
 		}
 		
-		Iterable<Product> gevondenProducten = productDAO.findByTitelContainsAndPrijsBetweenAndUitgifteBetween("Product", new BigDecimal(100), new BigDecimal(200), startDatum, new Date());
+		Iterable<Product> gevondenProducten = productDAO.findByTitelContainsAndPrijsBetweenAndUitgifteBetweenOrderByTitelAsc("Product", new BigDecimal(100), new BigDecimal(200), startDatum, new Date());
 		
 		Assert.assertFalse(gevondenProducten.iterator().hasNext());
 	}

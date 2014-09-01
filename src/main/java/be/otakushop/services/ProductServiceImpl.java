@@ -117,7 +117,7 @@ class ProductServiceImpl implements ProductService {
 			e.printStackTrace();
 		}
 		
-		ArrayList<Product> producten =  (ArrayList<Product>)productDAO.findByTitelContainsAndPrijsBetweenAndUitgifteBetween(zoekform.getTitel(), new BigDecimal(zoekform.getStartPrijs()), new BigDecimal(zoekform.getEindPrijs()), startDatum, eindDatum);
+		ArrayList<Product> producten =  (ArrayList<Product>)productDAO.findByTitelContainsAndPrijsBetweenAndUitgifteBetweenOrderByTitelAsc(zoekform.getTitel(), new BigDecimal(zoekform.getStartPrijs()), new BigDecimal(zoekform.getEindPrijs()), startDatum, eindDatum);
 		Map<Long, Product> mapProducten = new ConcurrentHashMap<>();
 		
 		for(Product product:producten) {
