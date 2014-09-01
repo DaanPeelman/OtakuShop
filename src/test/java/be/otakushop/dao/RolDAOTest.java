@@ -1,7 +1,5 @@
 package be.otakushop.dao;
 
-import static org.junit.Assert.*;
-
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -32,7 +30,7 @@ public class RolDAOTest {
 	public void findByNaamIsKlantGeeftRolMetAlsNaamKlantTerug() {
 		Rol rol = rolDAO.findByNaamIs("klant");
 		
-		Assert.assertTrue(rol.getNaam().equals("klant"));
+		Assert.assertEquals("klant", rol.getNaam());
 	}
 	
 	@Test

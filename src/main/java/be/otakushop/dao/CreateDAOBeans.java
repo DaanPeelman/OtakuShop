@@ -14,6 +14,7 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 
 import be.otakushop.entities.Product;
+import be.otakushop.valueobjects.Adres;
 
 @Configuration
 @ComponentScan(basePackageClasses = CreateDAOBeans.class)
@@ -26,7 +27,7 @@ public class CreateDAOBeans {
 	LocalContainerEntityManagerFactoryBean entityManagerFactory() {
 		LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
 		factory.setDataSource(dataSource);
-		factory.setPackagesToScan(Product.class.getPackage().getName());
+		factory.setPackagesToScan(Product.class.getPackage().getName(), Adres.class.getPackage().getName());
 		HibernateJpaVendorAdapter adapter = new HibernateJpaVendorAdapter();
 		adapter.setShowSql(true);
 		factory.setJpaVendorAdapter(adapter);

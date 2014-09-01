@@ -30,6 +30,6 @@ public class UitgeverDAOTest {
 	public void findByNaamGeeftUitgeverMetDezeNaam() {
 		Uitgever uitgever = uitgeverDAO.findByNaam("Daan");
 		
-		Assert.assertTrue("Daan".equals(uitgever.getNaam()));
+		Assert.assertEquals("Daan", uitgever.getNaam());
 	}
 }

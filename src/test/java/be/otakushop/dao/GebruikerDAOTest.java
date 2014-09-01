@@ -37,10 +37,8 @@ public class GebruikerDAOTest {
 	
 	@Test
 	public void findByEmailadresMetBestaandEmailadresGeeftGebruikerMetHetzelfdeEmailAdres() {
-		String emailadres = "gebr2@gmail.com";
+		Gebruiker gebruiker = gebruikerDAO.findByEmailadres("gebr2@gmail.com");
 		
-		Gebruiker gebruiker = gebruikerDAO.findByEmailadres(emailadres);
-		
-		Assert.assertTrue(emailadres.equals(gebruiker.getEmailadres()));
+		Assert.assertEquals("gebr2@gmail.com", gebruiker.getEmailadres());
 	}
 }

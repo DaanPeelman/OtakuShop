@@ -4,8 +4,7 @@ import java.math.BigDecimal;
 import java.util.Collections;
 import java.util.Date;
 
-import junit.framework.Assert;
-
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;

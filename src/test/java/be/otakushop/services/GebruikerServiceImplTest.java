@@ -49,6 +49,6 @@ public class GebruikerServiceImplTest {
 		
 		gebruikerService.create(nieuweGebruiker);
 		
-		Assert.assertFalse(oudWachtwood.equals(nieuweGebruiker.getWachtwoord()));
+		Assert.assertNotEquals(oudWachtwood, nieuweGebruiker.getWachtwoord());
 	}
 }
