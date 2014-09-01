@@ -48,7 +48,10 @@
 							<form:input path="lijnen[${i.index}].id" type="hidden" value="${lijn.product.id}" />
 							<form:input path="lijnen[${i.index}].aantal" type="text" title="voer het aantal in dat u wil bestellen" value="${lijn.aantal}"/><form:errors path="lijnen[${i.index}].aantal" cssClass="fout" /></td>
 							<td class="prijs">&euro;<fmt:formatNumber value="${lijn.product.prijs * lijn.aantal}" minFractionDigits="2" maxFractionDigits="2" /></td>
-							<td><form action="#" method="post"><div><input type="submit" value="X" title="verwijder dit product uit uw mandje" class="delete_btn" /></div></form></td>
+							<spring:url var="verwijderurl" value="/mandje/{id}/verwijder">
+								<spring:param name="id" value="${lijn.product.id}" />
+							</spring:url>
+							<td><a href="${verwijderurl}" title="verwijder dit product uit uw mandje">X</a></td>
 						</tr>
 						<c:set var="totaal" value="${totaal + (lijn.product.prijs * lijn.aantal)}" />
 					</c:forEach>

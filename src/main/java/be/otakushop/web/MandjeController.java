@@ -12,6 +12,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.DataBinder;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -144,6 +145,13 @@ class MandjeController {
 		modelAndView.addObject("bestelbon", bestelbon);
 		
 		return modelAndView;
+	}
+	
+	@RequestMapping(value = "{product}/verwijder", method = RequestMethod.GET)
+	public ModelAndView verwijderProduct(@PathVariable Product product) {
+		mandje.deleteProduct(product.getId());		
+		
+		return new ModelAndView("redirect:/mandje");
 	}
 	
 	@InitBinder("mandjeForm")
