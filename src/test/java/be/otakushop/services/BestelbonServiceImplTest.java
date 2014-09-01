@@ -8,7 +8,6 @@ import org.junit.Test;
 import org.mockito.Mockito;
 
 import be.otakushop.dao.BestelbonDAO;
-import be.otakushop.dao.ProductDAO;
 import be.otakushop.entities.Bestelbon;
 import be.otakushop.entities.Product;
 import be.otakushop.entities.Serie;
@@ -22,9 +21,8 @@ public class BestelbonServiceImplTest {
 	@Before
 	public void setUp() {
 		BestelbonDAO bestelbonDAO = Mockito.mock(BestelbonDAO.class);
-		ProductDAO productDAO = Mockito.mock(ProductDAO.class);
 		
-		bestelbonService = new BestelbonServiceImpl(bestelbonDAO, productDAO);
+		bestelbonService = new BestelbonServiceImpl(bestelbonDAO);
 	}
 	
 	@Test(expected = NietGenoegInStockException.class)
