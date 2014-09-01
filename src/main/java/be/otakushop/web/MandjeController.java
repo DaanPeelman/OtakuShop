@@ -30,7 +30,7 @@ class MandjeController {
 	}
 	
 	@RequestMapping(method = RequestMethod.GET)
-	public ModelAndView viewMandje() {
+	ModelAndView viewMandje() {
 		ModelAndView modelAndView = new ModelAndView("mandje/mandje");
 		
 		modelAndView.addObject("aantalInMandje", mandje.getProducten().size());
@@ -57,7 +57,7 @@ class MandjeController {
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public ModelAndView addProduct(@Valid ProductAankoopForm productAankoopForm, BindingResult bindingResult) {
+	ModelAndView addProduct(@Valid ProductAankoopForm productAankoopForm, BindingResult bindingResult) {
 		ModelAndView modelAndView = new ModelAndView("producten/product");
 		
 		modelAndView.addObject("aantalInMandje", mandje.getProducten().size());
@@ -81,7 +81,7 @@ class MandjeController {
 	}
 	
 	@RequestMapping(method = RequestMethod.PUT)
-	public ModelAndView wijzigMandje(@Valid MandjeForm mandjeForm, BindingResult bindingResult) {
+	ModelAndView wijzigMandje(@Valid MandjeForm mandjeForm, BindingResult bindingResult) {
 		ModelAndView modelAndView = new ModelAndView("mandje/mandje");
 		
 		modelAndView.addObject("aantalInMandje", mandje.getProducten().size());
@@ -122,7 +122,7 @@ class MandjeController {
 	}
 	
 	@RequestMapping(value = "overzicht", method = RequestMethod.GET)
-	public ModelAndView viewMandjeOverzicht() {
+	 ModelAndView viewMandjeOverzicht() {
 		ModelAndView modelAndView = new ModelAndView("mandje/overzicht");
 		
 		modelAndView.addObject("aantalInMandje", mandje.getProducten().size());
@@ -142,14 +142,14 @@ class MandjeController {
 	}
 	
 	@RequestMapping(value = "{product}/verwijder", method = RequestMethod.GET)
-	public ModelAndView verwijderProduct(@PathVariable Product product) {
+	ModelAndView verwijderProduct(@PathVariable Product product) {
 		mandje.deleteProduct(product.getId());		
 		
 		return new ModelAndView("redirect:/mandje");
 	}
 	
 	@InitBinder("mandjeForm")
-	public void initBinderGebruiker(DataBinder dataBinder) {
+	void initBinderGebruiker(DataBinder dataBinder) {
 		MandjeForm mandjeForm = (MandjeForm)dataBinder.getTarget();
 		
 		if(mandjeForm.getAdres() == null) {

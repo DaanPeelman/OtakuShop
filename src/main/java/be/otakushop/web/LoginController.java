@@ -12,11 +12,11 @@ import be.otakushop.entities.Gebruiker;
 
 @Controller
 @RequestMapping("login")
-public class LoginController {
+class LoginController {
 	private Mandje mandje;
 	
 	@Autowired
-	public LoginController(Mandje mandje) {
+	LoginController(Mandje mandje) {
 		this.mandje = mandje;
 	}
 	
@@ -31,7 +31,7 @@ public class LoginController {
 	}
 	
 	@InitBinder("gebruiker")
-	public void initBinderGebruiker(DataBinder dataBinder) {
+	void initBinderGebruiker(DataBinder dataBinder) {
 		Gebruiker gebruiker = (Gebruiker)dataBinder.getTarget();
 		
 		if(gebruiker.getAdres() == null) {

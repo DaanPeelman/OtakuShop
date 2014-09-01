@@ -19,7 +19,6 @@ import javax.validation.Valid;
 
 import be.otakushop.valueobjects.Adres;
 import be.otakushop.valueobjects.Bestelbonlijn;
-import be.otakushop.web.AdresForm;
 
 @Entity
 @Table(name = "bestelbonnen")
@@ -42,7 +41,6 @@ public class Bestelbon implements Serializable {
 	
 	public Bestelbon() {
 		this.bestelbonlijnen = new HashSet<>();
-		leverAdres = new AdresForm();
 	}
 
 	public Bestelbon(Gebruiker gebruiker, Adres leverAdres) {

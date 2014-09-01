@@ -16,20 +16,20 @@ import be.otakushop.services.UitgeverService;
 
 @Controller
 @RequestMapping("/producten")
-public class ProductController {
+class ProductController {
 	private final ProductService productService;
 	private final UitgeverService uitgeverService;
 	private Mandje mandje;
 	
 	@Autowired
-	public ProductController(ProductService productService, UitgeverService uitgeverService, Mandje mandje) {
+	ProductController(ProductService productService, UitgeverService uitgeverService, Mandje mandje) {
 		this.productService = productService;
 		this.uitgeverService = uitgeverService;
 		this.mandje = mandje;
 	}
 	
 	@RequestMapping(method = RequestMethod.GET)
-	public ModelAndView findAll() {
+	ModelAndView findAll() {
 		ModelAndView modelAndView = new ModelAndView("producten/producten");
 		
 		modelAndView.addObject("aantalInMandje", mandje.getProducten().size());
@@ -45,7 +45,7 @@ public class ProductController {
 	}
 	
 	@RequestMapping(method = RequestMethod.GET, params = {"titel", "serie", "uitgever", "startPrijs", "eindPrijs", "startJaar", "eindJaar"})
-	public ModelAndView find(@Valid ZoekForm zoekForm, BindingResult bindingResult) {
+	ModelAndView find(@Valid ZoekForm zoekForm, BindingResult bindingResult) {
 		ModelAndView modelAndView = new ModelAndView("producten/producten");
 		
 		modelAndView.addObject("aantalInMandje", mandje.getProducten().size());
@@ -69,7 +69,7 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value = "{product}", method = RequestMethod.GET)
-	public ModelAndView view(@PathVariable Product product) {
+	ModelAndView view(@PathVariable Product product) {
 		ModelAndView modelAndView = new ModelAndView("producten/product");
 		
 		modelAndView.addObject("aantalInMandje", mandje.getProducten().size());

@@ -29,7 +29,7 @@ class BestelbonController {
 	private Mandje mandje;
 	
 	@Autowired
-	public BestelbonController(BestelbonService bestelbonService, ProductService productService, GebruikerService gebruikerService, Mandje mandje) {
+	BestelbonController(BestelbonService bestelbonService, ProductService productService, GebruikerService gebruikerService, Mandje mandje) {
 		this.bestelbonService = bestelbonService;
 		this.productService = productService;
 		this.gebruikerService = gebruikerService;

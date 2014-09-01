@@ -17,12 +17,12 @@ import be.otakushop.services.GebruikerService;
 
 @Controller
 @RequestMapping("gebruiker")
-public class GebruikerController {
+class GebruikerController {
 	private final GebruikerService gebruikerService;
 	private Mandje mandje;
 	
 	@Autowired
-	public GebruikerController(GebruikerService gebruikerService, Mandje mandje) {
+	GebruikerController(GebruikerService gebruikerService, Mandje mandje) {
 		this.gebruikerService = gebruikerService;
 		this.mandje = mandje;
 	}
@@ -51,7 +51,7 @@ public class GebruikerController {
 	}
 	
 	@InitBinder("gebruiker")
-	public void initBinderGebruiker(DataBinder dataBinder) {
+	void initBinderGebruiker(DataBinder dataBinder) {
 		Gebruiker gebruiker = (Gebruiker)dataBinder.getTarget();
 		
 		if(gebruiker.getAdres() == null) {

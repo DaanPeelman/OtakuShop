@@ -12,12 +12,12 @@ class AboutController {
 	private Mandje mandje;
 	
 	@Autowired
-	public AboutController(Mandje mandje) {
+	AboutController(Mandje mandje) {
 		this.mandje = mandje;
 	}
 	
 	@RequestMapping(method = RequestMethod.GET)
-	public ModelAndView viewAboutUs() {
+	ModelAndView viewAboutUs() {
 		ModelAndView modelAndView = new ModelAndView("about");
 		
 		modelAndView.addObject("aantalInMandje", mandje.getProducten().size());

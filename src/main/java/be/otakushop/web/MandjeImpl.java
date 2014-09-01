@@ -13,12 +13,12 @@ import be.otakushop.valueobjects.Adres;
 
 @Scope(value = "session", proxyMode = ScopedProxyMode.INTERFACES)
 @Component
-class MandjeImpl implements Mandje {
+public class MandjeImpl implements Mandje {
 	private Map<Long, Integer> producten;
 	@Valid
 	private Adres adres;
 	
-	MandjeImpl() {
+	public MandjeImpl() {
 		producten = new ConcurrentHashMap<>();
 	}
 	
@@ -42,6 +42,7 @@ class MandjeImpl implements Mandje {
 		return producten;
 	}
 
+	@Override
 	public void setProducten(Map<Long, Integer> producten) {
 		this.producten = producten;
 	}

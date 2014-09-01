@@ -10,18 +10,18 @@ import be.otakushop.services.ProductService;
 
 @Controller
 @RequestMapping("/")
-public class IndexController {
+class IndexController {
 	private final ProductService productService;
 	private Mandje mandje;
 	
 	@Autowired
-	public IndexController(ProductService productService, Mandje mandje) {
+	IndexController(ProductService productService, Mandje mandje) {
 		this.productService = productService;
 		this.mandje = mandje;
 	}
 	
 	@RequestMapping(method = RequestMethod.GET)
-	public ModelAndView index() {
+	ModelAndView index() {
 		ModelAndView modelAndView = new ModelAndView("index");
 		
 		modelAndView.addObject("aantalInMandje", mandje.getProducten().size());

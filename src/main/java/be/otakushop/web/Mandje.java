@@ -9,6 +9,7 @@ public interface Mandje {
 	void deleteProduct(long id);
 	void clearMandje();
 	Map<Long, Integer> getProducten();
+	void setProducten(Map<Long, Integer> producten);
 	Adres getAdres();
 	void setAdres(Adres adres);
 }
