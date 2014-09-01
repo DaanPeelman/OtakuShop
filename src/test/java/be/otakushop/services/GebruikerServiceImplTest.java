@@ -67,4 +67,13 @@ public class GebruikerServiceImplTest {
 		
 		Assert.assertTrue(isKlant);
 	}
+	
+	@Test
+	public void nieuweGebruikerIsActief() {
+		Gebruiker nieuweGebruiker = new Gebruiker("Test", "Test", new Adres("Test", "1", 9600, "Test"), "test@gmail.com", "Test123");
+		
+		gebruikerService.create(nieuweGebruiker);
+		
+		Assert.assertTrue(nieuweGebruiker.isActief());
+	}
 }
