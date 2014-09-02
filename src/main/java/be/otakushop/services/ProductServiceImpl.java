@@ -6,6 +6,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -151,6 +153,20 @@ class ProductServiceImpl implements ProductService {
 			}
 		}
 		
-		return mapProducten.values();
+		producten.clear();
+		
+		for(Product product:mapProducten.values()) {
+			producten.add(product);
+		}
+		
+		Collections.sort(producten, new Comparator<Product>() {
+	        @Override
+	        public int compare(Product  product1, Product  product2)
+	        {
+	            return  product1.getTitel().compareTo(product2.getTitel());
+	        }
+	    });
+		
+		return producten;
 	}
 }
