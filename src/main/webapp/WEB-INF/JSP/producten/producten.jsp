@@ -11,7 +11,6 @@
 	<title>Onze producten - OtakuShop</title>
 	<jsp:include page="../head.jsp" />
 	<link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.10.2/themes/ui-lightness/jquery-ui.css" />
-	<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 	<script type="text/javascript" src="http://code.jquery.com/ui/1.10.2/jquery-ui.min.js"></script>
 	<script type="text/javascript">
 		var pMax = parseInt("${maxPrijs}");

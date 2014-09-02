@@ -3,4 +3,5 @@
 	<link rel="stylesheet" type="text/css" href="${pageContext.servletContext.contextPath}/styles/clearfix.css" />
 	<link rel="stylesheet" type="text/css" href="${pageContext.servletContext.contextPath}/styles/stickyfooter.css" />
 	<link rel="stylesheet" type="text/css" href="${pageContext.servletContext.contextPath}/styles/default.css" />
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 	<script type="text/javascript" src="${pageContext.servletContext.contextPath}/javascript/external.js"></script>
