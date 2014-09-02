@@ -22,6 +22,7 @@
 			<div class="content_wrap clearfix">
 				<h2>Welkom ${gebruiker.voornaam}</h2>
 				<h3>Uw recente bestellingen</h3>
+				<c:if test="${not empty gebruiker.bestellingen}">
 				<c:forEach var="bestelling" items="${gebruiker.bestellingen}">
 					<c:set var="totaal" value="0" />
 					<c:forEach var="bestelbonlijn" items="${bestelling.bestelbonlijnen}">
@@ -33,6 +34,10 @@
 					<p><a href="${bestellingurl}" title="bekijk de details van de bestelling"><fmt:formatDate value="${bestelling.datum}" dateStyle="short"/> &euro;${totaal}</a></p>
 					<c:set var="totaal" value="0" />
 				</c:forEach>
+				</c:if>
+				<c:if test="${empty gebruiker.bestellingen}">
+					<p>U hebt nog geen bestellingen geplaatst.</p>
+				</c:if>
 				<h3>Uw gegevens</h3>
 				<p>Naam: ${gebruiker.voornaam}&nbsp;${gebruiker.familienaam}</p>
 				<p>Adres: ${gebruiker.adres.straat}&nbsp;${gebruiker.adres.nummer},&nbsp;${gebruiker.adres.postcode}&nbsp;${gebruiker.adres.gemeente}</p>
