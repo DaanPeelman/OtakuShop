@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -91,10 +92,28 @@ class BestelbonController {
 		
 		mandje.clearMandje();
 		
-		ModelAndView modelAndView = new ModelAndView("bestellingen/bestellingsucces");
+		ModelAndView modelAndView = new ModelAndView("bestelbonnen/bestellingsucces");
 		
 		modelAndView.addObject("aantalInMandje", mandje.getProducten().size());
 		modelAndView.addObject("bestelbon", bestelbon);
+		
+		return modelAndView;
+	}
+	
+	@RequestMapping(value="{bestelbon}", method = RequestMethod.GET)
+	ModelAndView readBestelbon(@PathVariable Bestelbon bestelbon, HttpServletRequest request) {
+		if(bestelbon.getGebruiker().getEmailadres().equals(request.getUserPrincipal().getName())) {
+			ModelAndView modelAndView = new ModelAndView("bestelbonnen/bestelling");
+			
+			modelAndView.addObject("aantalInMandje", mandje.getProducten().size());
+			modelAndView.addObject("bestelbon", bestelbon);
+			
+			return modelAndView;
+		}
+		
+		ModelAndView modelAndView = new ModelAndView("forbidden");
+		
+		modelAndView.addObject("aantalInMandje", mandje.getProducten().size());
 		
 		return modelAndView;
 	}

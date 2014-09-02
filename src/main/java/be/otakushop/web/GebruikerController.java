@@ -1,5 +1,6 @@
 package be.otakushop.web;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,16 @@ class GebruikerController {
 		this.mandje = mandje;
 	}
 	
+	@RequestMapping(method = RequestMethod.GET)
+	ModelAndView showGegevens(HttpServletRequest request) {
+		ModelAndView modelAndView = new ModelAndView("gebruiker/gebruiker");
+		
+		modelAndView.addObject("aantalInMandje", mandje.getProducten().size());
+		modelAndView.addObject("gebruiker", gebruikerService.findByEmailadres(request.getUserPrincipal().getName()));
+		
+		return modelAndView;
+	}
+	
 	@RequestMapping(method = RequestMethod.POST)
 	ModelAndView create(@Valid Gebruiker gebruiker, BindingResult bindingResult) {
 		ModelAndView modelAndView = new ModelAndView("login");
@@ -35,9 +46,12 @@ class GebruikerController {
 		
 		if(!bindingResult.hasErrors() && gebruiker.isValid()) {
 			try {
+				ModelAndView succesModelAndView = new ModelAndView("gebruiker/registratieSucces");
+				succesModelAndView.addObject("aantalInMandje", mandje.getProducten().size());
+				
 				gebruikerService.create(gebruiker);
 				
-				return new ModelAndView("gebruiker/registratieSucces");
+				return succesModelAndView;
 			} catch(GebruikerMetDitEmailadresBestaatAlException e) {
 				bindingResult.rejectValue("emailadres", "emailadresInGebruik");
 			}

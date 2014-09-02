@@ -4,6 +4,7 @@ import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
@@ -33,7 +34,10 @@ public class CreateSecurityFilter extends WebSecurityConfigurerAdapter {
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.formLogin().defaultSuccessUrl("/").loginPage("/login").and().logout().logoutSuccessUrl("/").and().authorizeRequests().antMatchers("/bestellingen").hasAuthority("klant").and().exceptionHandling().accessDeniedPage("/WEB-INF/JSP/forbidden.jsp");
+		http.formLogin().defaultSuccessUrl("/gebruiker").loginPage("/login").and().logout().logoutSuccessUrl("/")
+		.and().authorizeRequests().antMatchers("/bestellingen/**").authenticated()
+		.and().authorizeRequests().antMatchers(HttpMethod.GET, "/gebruiker").authenticated()
+		.and().exceptionHandling().accessDeniedPage("/WEB-INF/JSP/forbidden.jsp");
 	}
 
 }
