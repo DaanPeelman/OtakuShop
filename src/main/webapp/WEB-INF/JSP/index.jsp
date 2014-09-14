@@ -28,7 +28,7 @@
 					<spring:url var="producturl" value="/producten/{id}">
 						<spring:param name="id" value="${product.id}" />
 					</spring:url>
-						<div class="product_rij clearfix" title="meer informatie over ${product.titel}">
+						<div class="product_rij clearfix" title="meer details over ${product.titel}">
 							<div class="foto">
 								<img src="${pageContext.servletContext.contextPath}/images/producten/${product.id}.jpg" alt="<c:out value='${product.titel}' />"/>
 							</div> <!-- END .foto -->
