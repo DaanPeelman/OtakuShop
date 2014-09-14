@@ -40,7 +40,7 @@
 						<spring:param name="id" value="${lijn.product.id}" />
 					</spring:url>
 						<tr>
-							<td class="product_mandje"><img src="${pageContext.servletContext.contextPath}/images/producten/${lijn.product.id}.jpg" alt="${lijn.product.titel}"/><h3><a href="${producturl}" title="meer details over ${lijn.product.titel}">${lijn.product.titel}</a></h3>&euro;<fmt:formatNumber value="${lijn.product.prijs}" minFractionDigits="2" maxFractionDigits="2" /></td>
+							<td class="product_mandje" title="meer details over ${lijn.product.titel}"><img src="${pageContext.servletContext.contextPath}/images/producten/${lijn.product.id}.jpg" alt="${lijn.product.titel}"/><h3><a href="${producturl}" title="meer details over ${lijn.product.titel}">${lijn.product.titel}</a></h3>&euro;<fmt:formatNumber value="${lijn.product.prijs}" minFractionDigits="2" maxFractionDigits="2" /><span class="id">${lijn.product.id}</span></td>
 							<td>${lijn.aantal}</td>
 							<td class="prijs">&euro;<fmt:formatNumber value="${lijn.product.prijs * lijn.aantal}" minFractionDigits="2" maxFractionDigits="2" /></td>
 						</tr>
