@@ -43,7 +43,7 @@
 						<spring:param name="id" value="${lijn.product.id}" />
 					</spring:url>
 						<tr>
-							<td class="product_mandje" title="meer details over ${product.titel}"><img src="${pageContext.servletContext.contextPath}/images/producten/${lijn.product.id}.jpg" alt="${lijn.product.titel}"/><h3><a href="${producturl}" title="meer details over ${lijn.product.titel}">${lijn.product.titel}</a></h3>&euro;<fmt:formatNumber value="${lijn.product.prijs}" minFractionDigits="2" maxFractionDigits="2" /><span class="id">${lijn.product.id}</span></td>
+							<td class="product_mandje" title="meer details over ${lijn.product.titel}"><img src="${pageContext.servletContext.contextPath}/images/producten/${lijn.product.id}.jpg" alt="${lijn.product.titel}"/><h3><a href="${producturl}" title="meer details over ${lijn.product.titel}">${lijn.product.titel}</a></h3>&euro;<fmt:formatNumber value="${lijn.product.prijs}" minFractionDigits="2" maxFractionDigits="2" /><span class="id">${lijn.product.id}</span></td>
 							<td>
 							<form:input path="lijnen[${i.index}].id" type="hidden" value="${lijn.product.id}" />
 							<form:input path="lijnen[${i.index}].aantal" type="text" title="voer het aantal in dat u wil bestellen" value="${lijn.aantal}"/><form:errors path="lijnen[${i.index}].aantal" cssClass="fout" /></td>
