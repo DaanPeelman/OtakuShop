@@ -365,6 +365,14 @@ span.prijs {
 #winkelmandje .product_mandje {
 	text-align: left;
 }
+#winkelmandje .product_mandje:hover {
+	text-align: left;
+	
+	cursor: pointer;
+}
+#winkelmandje .product_mandje .id {
+	display: none;
+}
 #winkelmandje .aantal {
 	width: 60px;
 }
