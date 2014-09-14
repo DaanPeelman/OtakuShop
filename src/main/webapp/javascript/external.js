@@ -12,6 +12,6 @@ $(document).ready(function() {
 	$('.product_rij').click(function() {
 		
 		var nProductId = $(this).find('#productId').val();
-		window.location.replace("/" + nProductId);
+		window.location.replace("/OtakuShop/producten/" + nProductId);
 	});
 });

@@ -119,7 +119,7 @@
 					<spring:url var="producturl" value="/producten/{id}">
 						<spring:param name="id" value="${product.id}" />
 					</spring:url>
-					<div class="product_rij clearfix">
+					<div class="product_rij clearfix" title="meer informatie over ${product.titel}">
 						<div class="foto">
 							<img src="${pageContext.servletContext.contextPath}/images/producten/${product.id}.jpg" alt="${product.titel}"/>
 						</div> <!-- END .foto -->
@@ -131,8 +131,8 @@
 							<c:if test="${product.stock > 3}"><p class="stock in_stock clearfix">In voorraad</p></c:if>
 							<span class="prijs">&euro;<fmt:formatNumber value="${product.prijs}" minFractionDigits="2" maxFractionDigits="2"/></span>
 							<form:form class="bestelform" commandName="productAankoopForm" action="${url}" method="post">
-								<p><form:input path="productId" type="hidden" value="${product.id}" /><form:label path="aantal">Aantal:
-								<form:input path="aantal" type="text" title="voer het aantal in dat u wil bestellen" /></form:label>
+								<p><form:input path="productId" type="hidden" value="${product.id}" />
+								<form:input path="aantal" type="hidden"/>
 								<input type="submit" value="Voeg toe aan mandje" <c:if test="${product.stock > 0}">title="voeg dit product toe aan uw mandje"</c:if><c:if test="${product.stock == 0}">class="disabled" title="dit product is niet meer in voorraad" disabled="disabled"</c:if> /></p>
 							</form:form>
 						</div> <!-- END .info -->
