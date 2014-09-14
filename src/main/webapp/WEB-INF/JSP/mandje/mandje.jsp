@@ -92,8 +92,8 @@
 				</c:if>
 					<h2>Afleveradres</h2>
 					<c:if test="${not empty adresGebruiker}">
-						<input type="checkbox" id="cbxThuisAdres"/>
-						<label for="cbxAdres">Gebruiker mijn thuisadres</label>
+						<input type="checkbox" id="cbxThuisAdres" title="gebruik uw thuisadres als afleveradres"/>
+						<label for="cbxThuisAdres">Gebruiker mijn thuisadres als afleveradres</label>
 					</c:if>
 					<div>
 					<p><form:label path="adres.straat" for="straat">Straat:</form:label></p>
