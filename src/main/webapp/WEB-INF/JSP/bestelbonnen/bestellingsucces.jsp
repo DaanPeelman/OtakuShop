@@ -38,7 +38,7 @@
 						<spring:param name="id" value="${bestellijn.product.id}" />
 					</spring:url>
 						<tr>
-							<td class="product_mandje"><img src="${pageContext.servletContext.contextPath}/images/producten/${bestellijn.product.id}.jpg" alt="${bestellijn.product.titel}"/><h3><a href="${producturl}" title="meer details over ${bestellijn.product.titel}">${bestellijn.product.titel}</a></h3></td>
+							<td class="product_mandje" title="meer details over ${bestellijn.product.titel}"><img src="${pageContext.servletContext.contextPath}/images/producten/${bestellijn.product.id}.jpg" alt="${bestellijn.product.titel}"/><h3><a href="${producturl}" title="meer details over ${bestellijn.product.titel}">${bestellijn.product.titel}</a></h3><span class="id">${bestellijn.product.id}</span></td>
 							<td>${bestellijn.aantal}</td>
 							<td class="prijs">&euro;<fmt:formatNumber value="${bestellijn.product.prijs * bestellijn.aantal}" minFractionDigits="2" maxFractionDigits="2" /></td>
 						</tr>
