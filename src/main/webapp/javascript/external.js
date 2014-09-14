@@ -11,7 +11,7 @@ $(document).ready(function() {
 	);
 	$('.product_rij').click(function() {
 		var nProductId = $(this).find('#productId').val();
-		$(location).attr("href", "/producten/" + nProductId);
+		$(location).attr("href", "/OtakuShop/producten/" + nProductId);
 	});
 	$('.product_mandje').hover(
 		function() {
@@ -23,7 +23,7 @@ $(document).ready(function() {
 	);
 	$('.product_mandje').click(function() {
 		var nProductId = $(this).find('.id').html();
-		$(location).attr("href", "/producten/" + nProductId);
+		$(location).attr("href", "/OtakuShop/producten/" + nProductId);
 	});
 	
 	$('#winkelmandje input').change(function() {
