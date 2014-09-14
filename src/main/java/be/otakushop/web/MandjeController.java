@@ -1,5 +1,6 @@
 package be.otakushop.web;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import be.otakushop.entities.Bestelbon;
+import be.otakushop.entities.Gebruiker;
 import be.otakushop.entities.Product;
+import be.otakushop.services.GebruikerService;
 import be.otakushop.services.ProductService;
 import be.otakushop.valueobjects.Bestelbonlijn;
 
@@ -21,19 +24,27 @@ import be.otakushop.valueobjects.Bestelbonlijn;
 @RequestMapping("mandje")
 class MandjeController {
 	private final ProductService productService;
+	private final GebruikerService gebruikerService;
 	private Mandje mandje;
 	
 	@Autowired
-	MandjeController(ProductService productService, Mandje mandje) {
+	MandjeController(ProductService productService, GebruikerService gebruikerService, Mandje mandje) {
 		this.productService = productService;
+		this.gebruikerService = gebruikerService;
 		this.mandje = mandje;
 	}
 	
 	@RequestMapping(method = RequestMethod.GET)
-	ModelAndView viewMandje() {
+	ModelAndView viewMandje(HttpServletRequest request) {
 		ModelAndView modelAndView = new ModelAndView("mandje/mandje");
 		
 		modelAndView.addObject("aantalInMandje", mandje.getProducten().size());
+		
+		if(request.getUserPrincipal() != null) {
+			Gebruiker gebruiker = gebruikerService.findByEmailadres(request.getUserPrincipal().getName());
+			
+			modelAndView.addObject("adresGebruiker", gebruiker.getAdres());
+		}
 		
 		if(mandje.getProducten().size() > 0) {
 			Bestelbon productenInMandje = new Bestelbon();

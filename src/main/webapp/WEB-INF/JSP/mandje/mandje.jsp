@@ -10,6 +10,28 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>Uw mandje - OtakuShop</title>
 	<jsp:include page="../head.jsp" />
+	<script type="text/javascript">
+		$(document).ready(function(){
+			if (($('#straat').val() == "${adresGebruiker.straat}") && ($('#huisnummer').val() == "${adresGebruiker.nummer}") && ($('#gemeente').val() == "${adresGebruiker.gemeente}") && ($('#postcode').val() == "${adresGebruiker.postcode}")) {
+				$('#cbxThuisAdres').prop('checked', true);
+			}
+
+			$('#cbxThuisAdres').change(
+				function() {
+					if ($('#cbxThuisAdres').is(':checked')) {
+						$('#straat').val("${adresGebruiker.straat}");
+						$('#huisnummer').val("${adresGebruiker.nummer}");
+						$('#gemeente').val("${adresGebruiker.gemeente}");
+						$('#postcode').val("${adresGebruiker.postcode}");
+					} else {
+						$('#straat').val("");
+						$('#huisnummer').val("");
+						$('#gemeente').val("");
+						$('#postcode').val("");
+					}
+			});
+		});
+	</script>
 </head>
 <body>
 	<div id="wrapper">
@@ -69,6 +91,10 @@
 					</div>
 				</c:if>
 					<h2>Afleveradres</h2>
+					<c:if test="${not empty adresGebruiker}">
+						<input type="checkbox" id="cbxThuisAdres"/>
+						<label for="cbxAdres">Gebruiker mijn thuisadres</label>
+					</c:if>
 					<div>
 					<p><form:label path="adres.straat" for="straat">Straat:</form:label></p>
 					<p><form:input path="adres.straat" type="text" id="straat" title="voer uw straat in" /></p>
