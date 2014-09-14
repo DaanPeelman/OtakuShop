@@ -10,8 +10,19 @@ $(document).ready(function() {
 		}
 	);
 	$('.product_rij').click(function() {
-		
 		var nProductId = $(this).find('#productId').val();
-		window.location.replace("/OtakuShop/producten/" + nProductId);
+		window.location.replace("/" + nProductId);
+	});
+	$('.product_mandje').hover(
+		function() {
+			$(this).find('h3').css('text-decoration', 'underline');
+		},
+		function() {
+			$(this).find('h3').css('text-decoration', 'none');
+		}
+	);
+	$('.product_mandje').click(function() {
+		var nProductId = $(this).find('.id').html();
+		window.location.replace("/" + nProductId);
 	});
 });
