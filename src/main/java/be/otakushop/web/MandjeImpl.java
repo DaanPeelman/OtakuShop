@@ -1,5 +1,6 @@
 package be.otakushop.web;
 
+import java.io.Serializable;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -13,7 +14,9 @@ import be.otakushop.valueobjects.Adres;
 
 @Scope(value = "session", proxyMode = ScopedProxyMode.INTERFACES)
 @Component
-class MandjeImpl implements Mandje {
+class MandjeImpl implements Mandje, Serializable {
+	private static final long serialVersionUID = 1L;
+	
 	private Map<Long, Integer> producten;
 	@Valid
 	private Adres adres;
