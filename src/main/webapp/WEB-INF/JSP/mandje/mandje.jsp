@@ -65,11 +65,11 @@
 						<spring:param name="id" value="${lijn.product.id}" />
 					</spring:url>
 						<tr>
-							<td class="product_mandje" title="meer details over ${lijn.product.titel}"><img src="${pageContext.servletContext.contextPath}/images/producten/${lijn.product.id}.jpg" alt="${lijn.product.titel}"/><h3><a href="${producturl}" title="meer details over ${lijn.product.titel}">${lijn.product.titel}</a></h3>&euro;<fmt:formatNumber value="${lijn.product.prijs}" minFractionDigits="2" maxFractionDigits="2" /><span class="id">${lijn.product.id}</span></td>
+							<td class="product_mandje" title="meer details over ${lijn.product.titel}"><img src="${pageContext.servletContext.contextPath}/images/producten/${lijn.product.id}.jpg" alt="${lijn.product.titel}"/><h3><a href="${producturl}" title="meer details over ${lijn.product.titel}">${lijn.product.titel}</a></h3>&euro;<span id="lijnen${i.index}Prijs"><fmt:formatNumber value="${lijn.product.prijs}" minFractionDigits="2" maxFractionDigits="2" /></span><span class="id">${lijn.product.id}</span></td>
 							<td>
 							<form:input path="lijnen[${i.index}].id" type="hidden" value="${lijn.product.id}" />
-							<form:input path="lijnen[${i.index}].aantal" type="text" title="voer het aantal in dat u wil bestellen" value="${lijn.aantal}"/><form:errors path="lijnen[${i.index}].aantal" cssClass="fout" /></td>
-							<td class="prijs">&euro;<fmt:formatNumber value="${lijn.product.prijs * lijn.aantal}" minFractionDigits="2" maxFractionDigits="2" /></td>
+							<form:input path="lijnen[${i.index}].aantal" id="lijnen${i.index}" type="text" title="voer het aantal in dat u wil bestellen" value="${lijn.aantal}"/><form:errors path="lijnen[${i.index}].aantal" cssClass="fout" /></td>
+							<td class="prijs">&euro;<span id="lijnen${i.index}Totaal"><fmt:formatNumber value="${lijn.product.prijs * lijn.aantal}" minFractionDigits="2" maxFractionDigits="2" /></span></td>
 							<spring:url var="verwijderurl" value="/mandje/{id}/verwijder">
 								<spring:param name="id" value="${lijn.product.id}" />
 							</spring:url>
@@ -80,7 +80,7 @@
 						<tr>
 							<td>&nbsp;</td>
 							<td class="winkelmandje_overzicht totaal">Totaal:</td>
-							<td class="winkelmandje_overzicht prijs">&euro;<fmt:formatNumber value="${totaal}" minFractionDigits="2" maxFractionDigits="2" /></td>
+							<td class="winkelmandje_overzicht prijs">&euro;<span id="totaal"><fmt:formatNumber value="${totaal}" minFractionDigits="2" maxFractionDigits="2" /></span></td>
 							<td class="winkelmandje_overzicht">&nbsp;</td>
 						</tr>
 					</tbody>

@@ -25,4 +25,28 @@ $(document).ready(function() {
 		var nProductId = $(this).find('.id').html();
 		$(location).attr("href", "/OtakuShop/producten/" + nProductId);
 	});
+	
+	$('#winkelmandje input').change(function() {
+		if(!isNaN($(this).val())) {
+			var nAantal = parseInt($(this).val());
+			if(nAantal > 0) {									
+				var aVelden = $('#winkelmandje input:not([type="hidden"]').size();
+				var nTotaal = 0;
+				for(var i = 0; i < aVelden; i++) {
+					var sNaamAantal = "#lijnen" + i;
+					var nAantal = parseInt($(sNaamAantal).val());
+					
+					var sNaamPrijs = "#lijnen" + i + "Prijs";
+					var nPrijs = parseFloat($(sNaamPrijs).html());
+					
+					var sNaamTotaal = "#lijnen" + i + "Totaal";
+					$(sNaamTotaal).html((nAantal * nPrijs).toFixed(2));
+					
+					nTotaal += (nAantal * nPrijs);
+				}
+				
+				$('#totaal').html(nTotaal.toFixed(2));
+			}
+		}			
+	});
 });
