@@ -45,7 +45,7 @@ form div {
 
 #menu ul {
 	height: 30px;
-	width: 1014px;
+	width: 100%;
 }
 
 #menu ul li {
@@ -124,7 +124,8 @@ form div {
 }
 
 .content_wrap {
-	width: 1014px;
+	width: 70%;
+	min-width: 1002px;
 	
 	padding: 0 5px 0px 5px;
 	margin: 0 auto;
@@ -147,9 +148,13 @@ form div {
 }
 .aside #zoekform #totPrijs, .aside #zoekform #totDatum {
 	width: 30px;
+	margin-right: 0;
 	float: right;
 }
 .aside #zoekform .slider {
+	width: 180px;
+	
+	margin-left: 5px;
 	margin-bottom: 1.3em;
 }
 .aside #zoekform .slidertekst input[type=text] {
@@ -165,7 +170,7 @@ input[type=submit].disabled {
 
 #zoek_resultaten {
 	float: left;
-	width: 799px;
+	width: calc(100% - (205px + 10px));
 	padding-left: 10px;
 }
 
@@ -175,17 +180,21 @@ input[type=submit].disabled {
 	padding: 10px 10px;
 	margin-bottom: 10px;
 	border: 1px solid #ffe6cd;
+	
+	cursor: pointer;
 }
 .product_rij:hover {
 	background-color: #ffefde;
 }
 
 #laatste_producten .product_rij {
-	width: 992px;
+	color: #000;
+	
+	width: calc(100% - (20px + 2px));
 }
 
 #zoek_resultaten .product_rij {
-	width: 777px;
+	width: calc(100% - (20px + 2px));
 }
 
 #laatste_producten .product_rij .foto {
@@ -209,11 +218,11 @@ input[type=submit].disabled {
 	float: left;
 }
 #laatste_producten .product_rij .info {
-	width: 872px;
+	width: calc(100% - 120px);
 	float: left;
 }
 #zoek_resultaten .product_rij .info {
-	width: 687px;
+	width: calc(100% - 90px);
 	float: left;
 }
 .product_rij a {
@@ -266,19 +275,20 @@ span.prijs {
 }
 
 #product_overzicht #info {
-	width: 694px;
+	width: calc(100% - 320px);
 	float: left;
 }
 
 #product_overzicht #omschrijving {
 	border-top: 1px solid #ffb467;
 
+	width: 100%;
 	padding-top: 10px;
 	margin-top: 20px;
 }
 
 #registreer, #aanmelden {
-	width: 507px;
+	width: 50%;
 	
 	float: left;
 }
@@ -287,7 +297,7 @@ span.prijs {
 }
 
 #winkelmandje {
-	width: 1014px;
+	width: 100%;
 	text-align: center;
 	margin-bottom: 30px;
 }
