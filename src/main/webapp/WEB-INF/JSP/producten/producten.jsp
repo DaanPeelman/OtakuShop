@@ -148,4 +148,5 @@
 		<div class="push"></div>
 	</div> <!-- END #wrapper -->
 	<jsp:include page="../footer.jsp" />
+	</body>
 </html>
