@@ -32,20 +32,39 @@ $(document).ready(function() {
 			if(nAantal > 0) {									
 				var aVelden = $('#winkelmandje input:not([type="hidden"]').size();
 				var nTotaal = 0;
+				var bKomma = false;
+				
 				for(var i = 0; i < aVelden; i++) {
 					var sNaamAantal = "#lijnen" + i;
 					var nAantal = parseInt($(sNaamAantal).val());
 					
 					var sNaamPrijs = "#lijnen" + i + "Prijs";
-					var nPrijs = parseFloat($(sNaamPrijs).html());
+					sPrijs = $(sNaamPrijs).html();
+					
+					if(sPrijs.indexOf(',') > 0) {
+						bKomma = true;
+						sPrijs = sPrijs.replace(',', '.');
+					}
+					var nPrijs = parseFloat(sPrijs);
 					
 					var sNaamTotaal = "#lijnen" + i + "Totaal";
-					$(sNaamTotaal).html((nAantal * nPrijs).toFixed(2));
+					var sSubTotaal = (nAantal * nPrijs).toFixed(2) + "";
+					
+					if(bKomma) {
+						sSubTotaal = sSubTotaal.replace('.', ',');
+					}
+					
+					$(sNaamTotaal).html(sSubTotaal);
 					
 					nTotaal += (nAantal * nPrijs);
 				}
 				
-				$('#totaal').html(nTotaal.toFixed(2));
+				var sTotaal = nTotaal.toFixed(2) + "";
+				if(bKomma) {
+					sTotaal = sTotaal.replace('.', ',');
+				}
+				
+				$('#totaal').html(sTotaal);
 			}
 		}			
 	});
